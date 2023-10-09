@@ -1,6 +1,8 @@
-﻿namespace Nashet.SlotMachine.Gameplay.Contracts
+﻿using Nashet.Contracts.Patterns;
+
+namespace Nashet.SlotMachine.Gameplay.Contracts
 {
-	public interface IPlayerSoundsView
+	public interface IPlayerSoundsView : ISubscriber<ISlotMachineViewModel>, ISubscriber<IReelViewModel>
 	{
 	}
 }

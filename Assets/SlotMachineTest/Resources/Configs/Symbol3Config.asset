@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: aa5b9413618aa9849b9f30dbd69ab7b7, type: 3}
   onCollectedSound: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
-  effectTime: 1
-  effect: {fileID: 11400000, guid: a9b29041a3fcb6647bae277564158f4e, type: 2}
+  prize3InRow: 10

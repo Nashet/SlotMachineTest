@@ -1,4 +1,9 @@
-﻿namespace Nashet.SlotMachine.Gameplay.Contracts
+﻿using Nashet.Contracts.Patterns;
+
+namespace Nashet.SlotMachine.Gameplay.Contracts
 {
-	public interface ISlotMachineViewModel { }
+	public interface ISlotMachineViewModel : IPropertyChangeNotifier<ISlotMachineViewModel>, ISubscriber<IReelViewModel>
+	{
+		int lastSpinScores { get; }
+	}
 }

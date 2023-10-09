@@ -9,8 +9,8 @@ namespace Nashet.SlotMachine.Gameplay.Views
 		[SerializeField] private Image image;
 		public void PropertyChangedHandler(IReelViewModel sender, string propertyName)
 		{
-			if (propertyName == nameof(IReelViewModel.currentSymbol))
-				image.sprite = sender.currentSymbol.sprite;
+			if (propertyName == nameof(IReelViewModel.decorativeSymbol))
+				image.sprite = sender.decorativeSymbol.sprite;
 		}
 	}
 }

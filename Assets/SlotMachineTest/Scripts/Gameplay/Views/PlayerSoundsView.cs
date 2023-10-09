@@ -8,7 +8,8 @@ namespace Nashet.SlotMachine.Gameplay.Views
 	/// </summary>
 	public class PlayerSoundsView : MonoBehaviour, IPlayerSoundsView
 	{
-		[SerializeField] private AudioClip symbolCollected;
+		[SerializeField] private AudioClip threeInARow;
+		[SerializeField] private AudioClip reelTick;
 
 		private AudioSource audioSource;
 
@@ -23,21 +24,26 @@ namespace Nashet.SlotMachine.Gameplay.Views
 			audioSource.Play();
 		}
 
-		public void CoinCollectedHandler(GameObject obj)
+		public void PropertyChangedHandler(ISlotMachineViewModel sender, string propertyName)
 		{
-			PlaySound(symbolCollected);
+			if (propertyName == nameof(ISlotMachineViewModel.lastSpinScores))
+			{
+				if (threeInARow != null && sender.lastSpinScores != 0)
+				{
+					PlaySound(threeInARow);
+				}
+			}
 		}
 
-		//public void PropertyChangedHandler(IPlayerViewModel sender, string propertyName)
-		//{
-		//	if (propertyName == nameof(IPlayerViewModel.playerMovementContext))
-		//	{
-		//		AudioClip onCollectedSound = sender.playerMovementContext.state.config.onCollectedSound;
-		//		if (onCollectedSound != null)
-		//		{
-		//			PlaySound(onCollectedSound);
-		//		}
-		//	}
-		//}
+		public void PropertyChangedHandler(IReelViewModel sender, string propertyName)
+		{
+			if (propertyName == nameof(IReelViewModel.decorativeSymbol))
+			{
+				if (reelTick != null)
+				{
+					PlaySound(reelTick);
+				}
+			}
+		}
 	}
 }

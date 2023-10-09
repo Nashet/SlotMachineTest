@@ -10,5 +10,6 @@ namespace Nashet.SlotMachine.Configs
 	{
 		public Sprite sprite;
 		public AudioClip onCollectedSound;
+		public int prize3InRow;
 	}
 }

@@ -5,7 +5,8 @@ namespace Nashet.SlotMachine.Gameplay.Contracts
 {
 	public interface IReelViewModel : IPropertyChangeNotifier<IReelViewModel>
 	{
-		SymbolConfig currentSymbol { get; }
+		SymbolConfig decorativeSymbol { get; }
+		SymbolConfig selectedSymbol { get; }
 
 		void StartNewRound();
 	}
