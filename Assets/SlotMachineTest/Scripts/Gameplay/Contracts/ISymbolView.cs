@@ -10,4 +10,3 @@ namespace Nashet.SlotMachine.Gameplay.Contracts
 		SymbolConfig SymbolConfig { get; set; }
 	}
 }
-a
