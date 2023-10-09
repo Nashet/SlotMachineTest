@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcbb30af9073464c93d665ac04d1c21, type: 3}
   m_Name: GameplayConfig
   m_EditorClassIdentifier: 
-  amountOfDecorateSymbolsPerSpin: 8
+  amountOfDecorateSymbolsPerSpin: 4
   oneSymbolSpinTime: 0.2
   availableSymbols:
   - {fileID: 11400000, guid: 4cdd7c27c5f7dc54998a357e06a4590c, type: 2}

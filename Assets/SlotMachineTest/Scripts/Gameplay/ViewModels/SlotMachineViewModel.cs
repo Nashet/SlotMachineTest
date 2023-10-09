@@ -24,6 +24,7 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		public int lastSpinScores { get; protected set; }
 
 		private List<SymbolConfig> selectedSymbols = new List<SymbolConfig>();
+		private bool isSpinInProgress;
 
 		private void Awake()
 		{
@@ -57,6 +58,9 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 
 		private void StartNewRound()  //todo put it in a model
 		{
+			if (isSpinInProgress)
+				return;
+			isSpinInProgress = true;
 			selectedSymbols.Clear();
 			foreach (var item in reelVMlList)
 			{
@@ -87,7 +91,7 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 			}
 
 			lastSpinScores = IsAllSymbolsSame() ? selectedSymbols[0].prize3InRow : 0;
-
+			isSpinInProgress = false;
 			RiseOnPropertyChanged(nameof(lastSpinScores));
 		}
 
