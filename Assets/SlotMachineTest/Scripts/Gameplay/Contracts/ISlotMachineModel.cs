@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 namespace Nashet.SlotMachine.Gameplay.Contracts
 {
-	public interface ISlotMachineModel
+	public interface ISlotMachineModel : IPropertyChangeNotifier<ISlotMachineModel>
 	{
-		int LastSpinScores { get; }
+		int lastSpinScores { get; }
 
-		event PropertyChangedEventHandler<ISlotMachineModel> OnPropertyChanged;
 		IList<IReelModel> reelModelsList { get; }
+		SymbolConfig symbolConfig { get; }
+		float extraBonusSum { get; }
 
 		void HandleReelStop(SymbolConfig selectedSymbol);
-		void RiseOnPropertyChanged(string propertyName);
 		void StartNewRound();
 	}
 }

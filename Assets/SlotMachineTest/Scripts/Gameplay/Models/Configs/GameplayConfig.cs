@@ -14,8 +14,10 @@ namespace Nashet.SlotMachine.Configs
 		public int randomAmountOfDecorateSymbolsPerSpin;
 
 		public float oneSymbolSpinTime;
-		[FormerlySerializedAs("collectableObjectTypes")]
 		public List<SymbolConfig> availableSymbols;
+		[FormerlySerializedAs("extraPrize")]
+		public List<SymbolConfig> extraBonusSymbol;
+		public float extraBonusMultiplier;
 	}
 }
 

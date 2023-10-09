@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Nashet.SlotMachine.Configs
 {
@@ -9,7 +10,8 @@ namespace Nashet.SlotMachine.Configs
 	public class SymbolConfig : ScriptableObject
 	{
 		public Sprite sprite;
-		public AudioClip onCollectedSound;
+		[FormerlySerializedAs("onCollectedSound")]
+		public AudioClip winSound;
 		public int prize3InRow;
 	}
 }

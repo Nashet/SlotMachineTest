@@ -7,20 +7,41 @@ using System.Collections.Generic;
 
 namespace Nashet.SlotMachine.Gameplay.Models
 {
-	public class SlotMachineModel : ISlotMachineModel, IPropertyChangeNotifier<ISlotMachineModel>
+	public class SlotMachineModel : ISlotMachineModel
 	{
 		public event PropertyChangedEventHandler<ISlotMachineModel> OnPropertyChanged;
 
+		private GameplayConfig gameplayConfig;
+
 		public IList<IReelModel> reelModelsList { get; protected set; }
+		public SymbolConfig symbolConfig => selectedSymbols[0];
 
 		private List<SymbolConfig> selectedSymbols = new List<SymbolConfig>();
 		private bool isSpinInProgress;
+		private float _extraBonusSum;
+		private int _lastSpinScores;
 
-		public int LastSpinScores { get; protected set; }
-
+		public int lastSpinScores
+		{
+			get => _lastSpinScores; protected set
+			{
+				_lastSpinScores = value;
+				RiseOnPropertyChanged(nameof(lastSpinScores));
+			}
+		}
+		public float extraBonusSum
+		{
+			get => _extraBonusSum;
+			private set
+			{
+				_extraBonusSum = value;
+				RiseOnPropertyChanged(nameof(extraBonusSum));
+			}
+		}
 
 		public SlotMachineModel(GameplayConfig gameplayConfig, IEnumerable<IReelViewModel> reelVMList)
 		{
+			this.gameplayConfig = gameplayConfig;
 			reelModelsList = new List<IReelModel>();
 			foreach (var item in reelVMList)
 			{
@@ -50,9 +71,12 @@ namespace Nashet.SlotMachine.Gameplay.Models
 				return;
 			}
 
-			LastSpinScores = IsAllSymbolsSame() ? selectedSymbols[0].prize3InRow : 0;
+			lastSpinScores = IsAllSymbolsSame() ? selectedSymbols[0].prize3InRow : 0;
+			if (lastSpinScores > 0 && gameplayConfig.extraBonusSymbol.Contains(symbolConfig))
+			{
+				extraBonusSum = symbolConfig.prize3InRow * gameplayConfig.extraBonusMultiplier;
+			}
 			isSpinInProgress = false;
-			RiseOnPropertyChanged(nameof(LastSpinScores));
 		}
 
 		private bool IsAllSymbolsSame()

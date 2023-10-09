@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Nashet.SlotMachine.Gameplay.Models
 {
-	public class ReelModel : IReelModel, IPropertyChangeNotifier<IReelModel>
+	public class ReelModel : IReelModel
 	{
 		public event PropertyChangedEventHandler<IReelModel> OnPropertyChanged;
 

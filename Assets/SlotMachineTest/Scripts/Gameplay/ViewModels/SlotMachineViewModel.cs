@@ -17,11 +17,11 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 	{
 		public event PropertyChangedEventHandler<ISlotMachineViewModel> OnPropertyChanged;
 
-		public int lastSpinScores => model.LastSpinScores;
-
+		public int lastSpinScores => model.lastSpinScores;
 
 		[SerializeField] private PlayerInput playerInput;
 		[SerializeField] private PlayerSoundsView playerSoundsView;
+		[SerializeField] private ExtraBonusWindowViewModel extraBonusWindowViewModel;
 		[SerializeField] private List<ReelViewModel> reelVMlList = new();
 		[SerializeField] private string configHolderName;
 
@@ -38,7 +38,7 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 			model.OnPropertyChanged += PropertyChangedHandler;
 			playerInput.OnSpinButtonClicked += OnSpinButtonClickedHandler;
 			OnPropertyChanged += playerSoundsView.PropertyChangedHandler;
-
+			extraBonusWindowViewModel.Initialize(model);
 			for (int i = 0; i < reelVMlList.Count; i++)
 			{
 				var item = reelVMlList[i];
@@ -79,7 +79,7 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 
 		public void PropertyChangedHandler(ISlotMachineModel sender, string propertyName)
 		{
-			if (propertyName == nameof(ISlotMachineModel.LastSpinScores))
+			if (propertyName == nameof(ISlotMachineModel.lastSpinScores))
 			{
 				RiseOnPropertyChanged(nameof(lastSpinScores));
 			}

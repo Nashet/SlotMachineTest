@@ -10,8 +10,7 @@ namespace Nashet.SlotMachine.Gameplay.Views
 	/// </summary>
 	public class SymbolView : MonoBehaviour, ISymbolView
 	{
-		[SerializeField] private SymbolConfig symbolConfig;
-		public SymbolConfig SymbolConfig
+		public SymbolConfig symbolConfig
 		{
 			get
 			{

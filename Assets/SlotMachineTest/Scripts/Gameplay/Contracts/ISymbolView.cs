@@ -7,6 +7,6 @@ namespace Nashet.SlotMachine.Gameplay.Contracts
 	/// </summary>
 	public interface ISymbolView
 	{
-		SymbolConfig SymbolConfig { get; set; }
+		SymbolConfig symbolConfig { get; set; }
 	}
 }
