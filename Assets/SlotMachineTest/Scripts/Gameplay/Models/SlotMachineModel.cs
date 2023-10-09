@@ -1,6 +1,7 @@
 ﻿using Nashet.Contracts.Patterns;
 using Nashet.SlotMachine.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
+using Nashet.SlotMachine.Gameplay.ViewModels;
 using System.Collections.Generic;
 
 
@@ -18,12 +19,13 @@ namespace Nashet.SlotMachine.Gameplay.Models
 		public int LastSpinScores { get; protected set; }
 
 
-		public SlotMachineModel(GameplayConfig gameplayConfig, IFakeRandomStrategy<SymbolConfig> randomStrategy, IEnumerable<IReelViewModel> reelVMList)
+		public SlotMachineModel(GameplayConfig gameplayConfig, IEnumerable<IReelViewModel> reelVMList)
 		{
 			reelModelsList = new List<IReelModel>();
 			foreach (var item in reelVMList)
 			{
-				reelModelsList.Add(new ReelModel(randomStrategy, gameplayConfig));
+				var randomSymbolStrategy = new FakeRandomStrategy(gameplayConfig);
+				reelModelsList.Add(new ReelModel(randomSymbolStrategy, gameplayConfig));
 			}
 		}
 

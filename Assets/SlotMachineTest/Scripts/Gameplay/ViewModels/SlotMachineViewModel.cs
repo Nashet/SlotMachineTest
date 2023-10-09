@@ -34,12 +34,11 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		}
 		public void Initialize(GameplayConfig gameplayConfig)
 		{
-			model = new SlotMachineModel(gameplayConfig, new FakeRandomStrategy(gameplayConfig), reelVMlList);
+			model = new SlotMachineModel(gameplayConfig, reelVMlList);
 			model.OnPropertyChanged += PropertyChangedHandler;
 			playerInput.OnSpinButtonClicked += OnSpinButtonClickedHandler;
 			OnPropertyChanged += playerSoundsView.PropertyChangedHandler;
 
-			var randomStrategy = new FakeRandomStrategy(gameplayConfig);
 			for (int i = 0; i < reelVMlList.Count; i++)
 			{
 				var item = reelVMlList[i];

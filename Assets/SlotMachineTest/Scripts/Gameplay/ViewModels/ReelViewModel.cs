@@ -29,7 +29,8 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 
 		private void OnDestroy()
 		{
-			model.OnPropertyChanged -= PropertyChangedHandler;
+			if (model != null)
+				model.OnPropertyChanged -= PropertyChangedHandler;
 
 			OnPropertyChanged -= reelView.PropertyChangedHandler;
 			OnPropertyChanged -= playerSoundsView.PropertyChangedHandler;

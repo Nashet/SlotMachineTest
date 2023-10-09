@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 6493518464111781502}
+  playerSoundsView: {fileID: 0}
   reelVMlList:
   - {fileID: 1374459906481426018}
   - {fileID: 4369597324346078406}

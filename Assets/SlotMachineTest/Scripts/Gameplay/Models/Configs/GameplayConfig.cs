@@ -11,6 +11,8 @@ namespace Nashet.SlotMachine.Configs
 	public class GameplayConfig : ScriptableObject
 	{
 		public int amountOfDecorateSymbolsPerSpin;
+		public int randomAmountOfDecorateSymbolsPerSpin;
+
 		public float oneSymbolSpinTime;
 		[FormerlySerializedAs("collectableObjectTypes")]
 		public List<SymbolConfig> availableSymbols;

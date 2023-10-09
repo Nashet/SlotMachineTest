@@ -45,9 +45,10 @@ namespace Nashet.SlotMachine.Gameplay.Models
 		}
 		private async void SpinReel()
 		{
-			for (int i = 0; i < gameplayConfig.amountOfDecorateSymbolsPerSpin; i++)
-			{
+			randomStrategy.Reset();
 
+			while (!randomStrategy.IsFinished)
+			{
 				decorativeSymbol = randomStrategy.Get();
 				await Task.Delay((int)(gameplayConfig.oneSymbolSpinTime * 1000));
 			}
