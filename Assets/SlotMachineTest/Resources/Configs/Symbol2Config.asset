@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9586f18a860886439ab2beac817617f, type: 3}
+  m_Name: Symbol2Config
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 28fab6a5b9547794daaadad2594182c5, type: 3}
+  effectTime: 10
+  effect: {fileID: 11400000, guid: d365391b7f1fc304699b25db83321e6d, type: 2}
