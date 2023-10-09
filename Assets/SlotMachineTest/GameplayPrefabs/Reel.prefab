@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 2771483132901723485}
   - component: {fileID: 2226757251980940065}
   - component: {fileID: 3399980304984996630}
+  - component: {fileID: 4303545683215441454}
+  - component: {fileID: 5057922008171677465}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Reel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 28fab6a5b9547794daaadad2594182c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -75,3 +77,29 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4303545683215441454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936092021773617083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695c19a826d2df64b988118d917f07a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reelView: {fileID: 5057922008171677465}
+--- !u!114 &5057922008171677465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936092021773617083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9057f31bbf484be47993c21a67c2a7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 3399980304984996630}

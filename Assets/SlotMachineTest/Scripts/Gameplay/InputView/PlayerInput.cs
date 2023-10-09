@@ -1,5 +1,5 @@
-﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Gameplay.Contracts;
+﻿using Nashet.SlotMachine.Gameplay.Contracts;
+using System;
 using UnityEngine;
 
 namespace Nashet.SlotMachine.Gameplay.InputView
@@ -9,19 +9,18 @@ namespace Nashet.SlotMachine.Gameplay.InputView
 	/// </summary>
 	public class PlayerInput : MonoBehaviour, IPlayerInput
 	{
-		public event PropertyChangedEventHandler<IPlayerInput> OnPropertyChanged;
+		public Action OnSpinButtonClicked;
 
-		public void RiseOnPropertyChanged(string propertyName)
+		Action IPlayerInput.OnSpinButtonClicked { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+		public void RiseOnPropertyChanged()
 		{
-			OnPropertyChanged?.Invoke(this, propertyName);
+			OnSpinButtonClicked?.Invoke();
 		}
 
-		private void Update()
+		public void OnSpinButtonClickedHandler()
 		{
-			if (Input.anyKeyDown)
-			{
-				RiseOnPropertyChanged(nameof(PlayerInput));
-			}
+			RiseOnPropertyChanged();
 		}
 	}
 }

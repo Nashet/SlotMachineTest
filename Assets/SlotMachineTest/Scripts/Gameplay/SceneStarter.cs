@@ -19,6 +19,9 @@ namespace Nashet.SlotMachine
 		{
 			var configService = new SOConfigService(configHolderName);
 			var gameplayConfig = configService.GetConfig<GameplayConfig>();
+			//new SlotMachineViewModel( gameplayConfig);
+
+			//todo delete
 		}
 	}
 }

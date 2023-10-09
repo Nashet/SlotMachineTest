@@ -10,6 +10,8 @@ namespace Nashet.SlotMachine.Configs
 	[CreateAssetMenu(fileName = nameof(GameplayConfig), menuName = "Solution/" + nameof(GameplayConfig))]
 	public class GameplayConfig : ScriptableObject
 	{
+		public int amountOfDecorateSymbolsPerSpin;
+		public float oneSymbolSpinTime;
 		[FormerlySerializedAs("collectableObjectTypes")]
 		public List<SymbolConfig> availableSymbols;
 	}

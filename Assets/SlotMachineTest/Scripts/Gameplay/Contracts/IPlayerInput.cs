@@ -1,8 +1,9 @@
-﻿using Nashet.Contracts.Patterns;
+﻿using System;
 
 namespace Nashet.SlotMachine.Gameplay.Contracts
 {
-	public interface IPlayerInput : IPropertyChangeNotifier<IPlayerInput>
+	public interface IPlayerInput
 	{
+		Action OnSpinButtonClicked { get; set; }
 	}
 }
