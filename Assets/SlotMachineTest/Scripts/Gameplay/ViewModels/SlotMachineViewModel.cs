@@ -3,6 +3,7 @@ using Nashet.Contracts.Patterns;
 using Nashet.SlotMachine.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
 using Nashet.SlotMachine.Gameplay.InputView;
+using Nashet.SlotMachine.Gameplay.Models;
 using Nashet.SlotMachine.Gameplay.Views;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,17 +15,17 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 	/// </summary>
 	public class SlotMachineViewModel : MonoBehaviour, ISlotMachineViewModel
 	{
+		public event PropertyChangedEventHandler<ISlotMachineViewModel> OnPropertyChanged;
+
+		public int lastSpinScores => model.LastSpinScores;
+
+
 		[SerializeField] private PlayerInput playerInput;
 		[SerializeField] private PlayerSoundsView playerSoundsView;
 		[SerializeField] private List<ReelViewModel> reelVMlList = new();
 		[SerializeField] private string configHolderName;
 
-		public event PropertyChangedEventHandler<ISlotMachineViewModel> OnPropertyChanged;
-
-		public int lastSpinScores { get; protected set; }
-
-		private List<SymbolConfig> selectedSymbols = new List<SymbolConfig>();
-		private bool isSpinInProgress;
+		private ISlotMachineModel model;
 
 		private void Awake()
 		{
@@ -33,6 +34,8 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		}
 		public void Initialize(GameplayConfig gameplayConfig)
 		{
+			model = new SlotMachineModel(gameplayConfig, new FakeRandomStrategy(gameplayConfig), reelVMlList);
+			model.OnPropertyChanged += PropertyChangedHandler;
 			playerInput.OnSpinButtonClicked += OnSpinButtonClickedHandler;
 			OnPropertyChanged += playerSoundsView.PropertyChangedHandler;
 
@@ -40,8 +43,8 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 			for (int i = 0; i < reelVMlList.Count; i++)
 			{
 				var item = reelVMlList[i];
-				item.Initialize(gameplayConfig, randomStrategy, playerSoundsView);
 				item.OnPropertyChanged += PropertyChangedHandler;
+				item.Initialize(gameplayConfig, playerSoundsView, model.reelModelsList[i]);
 			}
 		}
 
@@ -49,62 +52,38 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		{
 			playerInput.OnSpinButtonClicked -= OnSpinButtonClickedHandler;
 			OnPropertyChanged -= playerSoundsView.PropertyChangedHandler;
+			model.OnPropertyChanged -= PropertyChangedHandler;
+			for (int i = 0; i < reelVMlList.Count; i++)
+			{
+				var item = reelVMlList[i];
+				item.OnPropertyChanged -= PropertyChangedHandler;
+			}
 		}
 
 		private void OnSpinButtonClickedHandler()
 		{
-			StartNewRound();
-		}
-
-		private void StartNewRound()  //todo put it in a model
-		{
-			if (isSpinInProgress)
-				return;
-			isSpinInProgress = true;
-			selectedSymbols.Clear();
-			foreach (var item in reelVMlList)
-			{
-				item.StartNewRound();
-			}
+			model.StartNewRound();
 		}
 
 		public void RiseOnPropertyChanged(string propertyName)
 		{
-			OnPropertyChanged?.Invoke(this, nameof(lastSpinScores));
+			OnPropertyChanged?.Invoke(this, propertyName);
 		}
 
 		public void PropertyChangedHandler(IReelViewModel sender, string propertyName)
 		{
 			if (propertyName == nameof(IReelViewModel.selectedSymbol))
 			{
-				HandleReelsStop(sender);
+				model.HandleReelStop(sender.selectedSymbol);
 			}
 		}
 
-		private void HandleReelsStop(IReelViewModel sender)
+		public void PropertyChangedHandler(ISlotMachineModel sender, string propertyName)
 		{
-			selectedSymbols.Add(sender.selectedSymbol);
-			var allReelsHaveStopped = selectedSymbols.Count == reelVMlList.Count;
-			if (!allReelsHaveStopped)
+			if (propertyName == nameof(ISlotMachineModel.LastSpinScores))
 			{
-				return;
+				RiseOnPropertyChanged(nameof(lastSpinScores));
 			}
-
-			lastSpinScores = IsAllSymbolsSame() ? selectedSymbols[0].prize3InRow : 0;
-			isSpinInProgress = false;
-			RiseOnPropertyChanged(nameof(lastSpinScores));
-		}
-
-		private bool IsAllSymbolsSame()
-		{
-			var firstSymbol = selectedSymbols[0];
-			for (int i = 0; i < selectedSymbols.Count; i++)
-			{
-				SymbolConfig item = selectedSymbols[i];
-				if (item != firstSymbol)
-					return false;
-			}
-			return true;
 		}
 	}
 }

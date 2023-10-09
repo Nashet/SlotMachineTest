@@ -2,69 +2,48 @@
 using Nashet.SlotMachine.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
 using Nashet.SlotMachine.Gameplay.Views;
-using System.Collections;
 using UnityEngine;
 
 namespace Nashet.SlotMachine.Gameplay.ViewModels
 {
 	public class ReelViewModel : MonoBehaviour, IReelViewModel
 	{
+		public event PropertyChangedEventHandler<IReelViewModel> OnPropertyChanged;
+		public SymbolConfig decorativeSymbol => model.decorativeSymbol;
+		public SymbolConfig selectedSymbol => model.selectedSymbol;
+
 		[SerializeField] private ReelView reelView;
-		public SymbolConfig decorativeSymbol { get; private set; }
-		public SymbolConfig selectedSymbol { get; private set; }
 
-		private GameplayConfig gameplayConfig;
-		private WaitForSeconds oneSymbolSpinTime;
-		private IFakeRandomStrategy<SymbolConfig> randomStrategy;
 		private IPlayerSoundsView playerSoundsView;
+		private IReelModel model;
 
-		internal void Initialize(GameplayConfig gameplayConfig, IFakeRandomStrategy<SymbolConfig> fakeRandomStrategy, IPlayerSoundsView playerSoundsView)
+		internal void Initialize(GameplayConfig gameplayConfig, IPlayerSoundsView playerSoundsView, IReelModel reelModel)
 		{
-			this.gameplayConfig = gameplayConfig;
-			this.randomStrategy = fakeRandomStrategy;
 			this.playerSoundsView = playerSoundsView;
-			oneSymbolSpinTime = new WaitForSeconds(gameplayConfig.oneSymbolSpinTime);
+			model = reelModel;
+			model.OnPropertyChanged += PropertyChangedHandler;
+
 			OnPropertyChanged += reelView.PropertyChangedHandler;
 			OnPropertyChanged += playerSoundsView.PropertyChangedHandler;
 		}
 
 		private void OnDestroy()
 		{
+			model.OnPropertyChanged -= PropertyChangedHandler;
+
 			OnPropertyChanged -= reelView.PropertyChangedHandler;
 			OnPropertyChanged -= playerSoundsView.PropertyChangedHandler;
 		}
 
-		public event PropertyChangedEventHandler<IReelViewModel> OnPropertyChanged;
-
-		public void StartNewRound()
-		{
-			StartCoroutine(SpinReel());
-		}
-
-		private IEnumerator SpinReel() //todo put it in a model
-		{
-			for (int i = 0; i < gameplayConfig.amountOfDecorateSymbolsPerSpin; i++)
-			{
-
-				SetSymbol(randomStrategy.Get());
-				RiseOnPropertyChanged(nameof(decorativeSymbol));
-				yield return oneSymbolSpinTime;
-			}
-
-			SetSymbol(randomStrategy.Get());
-			selectedSymbol = decorativeSymbol;
-			RiseOnPropertyChanged(nameof(selectedSymbol));
-		}
-
-		private void SetSymbol(SymbolConfig config)
-		{
-			decorativeSymbol = config;
-			RiseOnPropertyChanged(nameof(decorativeSymbol));
-		}
 
 		public void RiseOnPropertyChanged(string propertyName)
 		{
 			OnPropertyChanged?.Invoke(this, propertyName);
+		}
+
+		public void PropertyChangedHandler(IReelModel sender, string propertyName)
+		{
+			RiseOnPropertyChanged(propertyName);
 		}
 	}
 }
