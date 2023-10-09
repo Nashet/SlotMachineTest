@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28a69e10c4e36f42935b57a03db6a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threeInARow: {fileID: 8300000, guid: c48a972d3d024c2408a3331750786a29, type: 3}
-  reelTick: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
+  threeInARow: {fileID: 11400000, guid: ee90aba6d163fa74ba5d26d0c90d5811, type: 2}
+  reelTick: {fileID: 11400000, guid: f40b74c71c6e8a740a34da3f8c28f620, type: 2}
+  extraBonus: {fileID: 11400000, guid: 6b1e2f8a7b6ea754a9c0b3b2c3da4548, type: 2}
 --- !u!82 &6190355306724766967
 AudioSource:
   m_ObjectHideFlags: 0

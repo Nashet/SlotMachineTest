@@ -10,8 +10,6 @@ namespace Nashet.SlotMachine.Configs
 	public class SymbolConfig : ScriptableObject
 	{
 		public Sprite sprite;
-		[FormerlySerializedAs("onCollectedSound")]
-		public AudioClip winSound;
 		public int prize3InRow;
 	}
 }

@@ -1,4 +1,6 @@
-﻿using Nashet.SlotMachine.Gameplay.Contracts;
+﻿using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Gameplay.Contracts;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Nashet.SlotMachine.Gameplay.Views
@@ -8,14 +10,22 @@ namespace Nashet.SlotMachine.Gameplay.Views
 	/// </summary>
 	public class PlayerSoundsView : MonoBehaviour, IPlayerSoundsView
 	{
-		[SerializeField] private AudioClip threeInARow;
-		[SerializeField] private AudioClip reelTick;
+		//todo put it in gameplay config:
+		[SerializeField] private SoundConfig threeInARow;
+		[SerializeField] private SoundConfig reelTick;
+		[SerializeField] private SoundConfig extraBonus;
 
 		private AudioSource audioSource;
+		private List<SoundConfig> soundsQueue = new();
 
 		private void Start()
 		{
 			audioSource = GetComponent<AudioSource>();
+		}
+
+		private void AddInQueue(SoundConfig sound)
+		{
+			soundsQueue.Add(sound);
 		}
 
 		private void PlaySound(AudioClip soundClip)
@@ -30,8 +40,12 @@ namespace Nashet.SlotMachine.Gameplay.Views
 			{
 				if (threeInARow != null && sender.lastSpinScores != 0)
 				{
-					PlaySound(threeInARow);
+					AddInQueue(threeInARow);
 				}
+			}
+			if (propertyName == nameof(ISlotMachineViewModel.extraBonusSum))
+			{
+				AddInQueue(extraBonus);
 			}
 		}
 
@@ -41,8 +55,18 @@ namespace Nashet.SlotMachine.Gameplay.Views
 			{
 				if (reelTick != null)
 				{
-					PlaySound(reelTick);
+					AddInQueue(reelTick);
 				}
+			}
+		}
+
+		private void Update()
+		{
+			if (soundsQueue.Count > 0)
+			{
+				soundsQueue.Sort((x, y) => y.priority.CompareTo(x.priority));
+				PlaySound(soundsQueue[0].clip);
+				soundsQueue.Clear();
 			}
 		}
 	}

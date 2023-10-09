@@ -18,6 +18,7 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		public event PropertyChangedEventHandler<ISlotMachineViewModel> OnPropertyChanged;
 
 		public int lastSpinScores => model.lastSpinScores;
+		public float extraBonusSum => model.extraBonusSum;
 
 		[SerializeField] private PlayerInput playerInput;
 		[SerializeField] private PlayerSoundsView playerSoundsView;
@@ -79,9 +80,17 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 
 		public void PropertyChangedHandler(ISlotMachineModel sender, string propertyName)
 		{
-			if (propertyName == nameof(ISlotMachineModel.lastSpinScores))
+			switch (propertyName)
 			{
-				RiseOnPropertyChanged(nameof(lastSpinScores));
+				case nameof(ISlotMachineModel.lastSpinScores):
+					RiseOnPropertyChanged(nameof(lastSpinScores));
+					break;
+				case nameof(ISlotMachineModel.extraBonusSum):
+					RiseOnPropertyChanged(nameof(extraBonusSum));
+					break;
+				// Add more cases for other properties if needed
+				default:
+					break;
 			}
 		}
 	}
