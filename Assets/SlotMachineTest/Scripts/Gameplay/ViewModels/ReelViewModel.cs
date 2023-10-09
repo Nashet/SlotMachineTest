@@ -16,14 +16,17 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 
 		private IPlayerSoundsView playerSoundsView;
 		private IReelModel model;
+		private ISlotMachineViewModel slotMachineViewModel;
 
-		internal void Initialize(GameplayConfig gameplayConfig, IPlayerSoundsView playerSoundsView, IReelModel reelModel)
+		internal void Initialize(GameplayConfig gameplayConfig, IPlayerSoundsView playerSoundsView, IReelModel reelModel, ISlotMachineViewModel slotMachineViewModel)
 		{
+			this.slotMachineViewModel = slotMachineViewModel;
 			this.playerSoundsView = playerSoundsView;
 			model = reelModel;
 			model.OnPropertyChanged += PropertyChangedHandler;
 
 			OnPropertyChanged += reelView.PropertyChangedHandler;
+			slotMachineViewModel.OnPropertyChanged += reelView.PropertyChangedHandler;
 			OnPropertyChanged += playerSoundsView.PropertyChangedHandler;
 		}
 
@@ -34,8 +37,8 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 
 			OnPropertyChanged -= reelView.PropertyChangedHandler;
 			OnPropertyChanged -= playerSoundsView.PropertyChangedHandler;
+			slotMachineViewModel.OnPropertyChanged -= reelView.PropertyChangedHandler;
 		}
-
 
 		public void RiseOnPropertyChanged(string propertyName)
 		{

@@ -44,7 +44,7 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 			{
 				var item = reelVMlList[i];
 				item.OnPropertyChanged += PropertyChangedHandler;
-				item.Initialize(gameplayConfig, playerSoundsView, model.reelModelsList[i]);
+				item.Initialize(gameplayConfig, playerSoundsView, model.reelModelsList[i], this);
 			}
 		}
 

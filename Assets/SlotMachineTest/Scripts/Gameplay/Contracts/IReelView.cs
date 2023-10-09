@@ -2,7 +2,7 @@
 
 namespace Nashet.SlotMachine.Gameplay.Contracts
 {
-	public interface IReelView : ISubscriber<IReelViewModel>
+	public interface IReelView : ISubscriber<IReelViewModel>, ISubscriber<ISlotMachineViewModel>
 	{
 	}
 }

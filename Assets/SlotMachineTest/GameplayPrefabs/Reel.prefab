@@ -103,3 +103,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 3399980304984996630}
+  transitionDuration: 0.25
+  targetColor: {x: 2, y: 2, z: 2}

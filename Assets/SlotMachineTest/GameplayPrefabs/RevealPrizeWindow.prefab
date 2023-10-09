@@ -248,6 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prizeText: {fileID: 8423880592720030747}
   prizeTextTemplate: Your extra bonus prize is {0}
+  openingDelay: 1
 --- !u!114 &3334463909833862318
 MonoBehaviour:
   m_ObjectHideFlags: 0

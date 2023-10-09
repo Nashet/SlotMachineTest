@@ -1,4 +1,5 @@
 ﻿using Nashet.SlotMachine.Gameplay.Contracts;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,20 @@ namespace Nashet.SlotMachine.Gameplay.Views
 	{
 		[SerializeField] private Text prizeText;
 		[SerializeField] private string prizeTextTemplate;
-
+		[SerializeField] private float openingDelay;
+		
 		public void PropertyChangedHandler(IExtraBonusWindowViewModel sender, string propertyName)
 		{
 			if (propertyName == nameof(IExtraBonusWindowViewModel.extraBonusSum))
 			{
-				ExtraBonusHandler(sender);
+				StartWithDelay(sender);
 			}
+		}
+
+		private async void StartWithDelay(IExtraBonusWindowViewModel sender)
+		{
+			await Task.Delay((int)(openingDelay * 1000f));
+			ExtraBonusHandler(sender);
 		}
 
 		private void ExtraBonusHandler(IExtraBonusWindowViewModel sender)
