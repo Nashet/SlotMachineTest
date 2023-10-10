@@ -15,7 +15,6 @@ namespace Nashet.SlotMachine.Configs
 
 		public float oneSymbolSpinTime;
 		public List<SymbolConfig> availableSymbols;
-		[FormerlySerializedAs("extraPrize")]
 		public List<SymbolConfig> extraBonusSymbol;
 		public float extraBonusMultiplier;
 	}

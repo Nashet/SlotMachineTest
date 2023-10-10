@@ -23,7 +23,7 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 
 		public void Reset()
 		{
-			expectedSequenceSize = gameplayConfig.availableSymbols.Count + Random.Range(0, gameplayConfig.randomAmountOfDecorateSymbolsPerSpin);
+			expectedSequenceSize = gameplayConfig.amountOfDecorateSymbolsPerSpin + Random.Range(0, gameplayConfig.randomAmountOfDecorateSymbolsPerSpin);
 			var skipRandomElements = Random.Range(0, gameplayConfig.availableSymbols.Count);
 			for (var i = 0; i < skipRandomElements; i++)
 			{
