@@ -1,5 +1,5 @@
 ﻿using Nashet.SlotMachine.Gameplay.Contracts;
-using System.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,30 +10,33 @@ namespace Nashet.SlotMachine.Gameplay.Views
 		[SerializeField] private Text prizeText;
 		[SerializeField] private string prizeTextTemplate;
 		[SerializeField] private float openingDelay;
+		[SerializeField] private CanvasGroup canvasGroup;
 
 		public void PropertyChangedHandler(IExtraBonusWindowViewModel sender, string propertyName)
 		{
 			if (propertyName == nameof(IExtraBonusWindowViewModel.extraBonusSum))
 			{
-				StartWithDelay(sender);
+				StartCoroutine(StartWithDelay(sender));
 			}
 		}
 
-		private async void StartWithDelay(IExtraBonusWindowViewModel sender)
+		private IEnumerator StartWithDelay(IExtraBonusWindowViewModel sender)
 		{
-			await Task.Delay((int)(openingDelay * 1000f));
+			yield return new WaitForSeconds(openingDelay);
 			ExtraBonusHandler(sender);
 		}
 
 		private void ExtraBonusHandler(IExtraBonusWindowViewModel sender)
 		{
-			gameObject.SetActive(true);
+			canvasGroup.alpha = 1f;
+			canvasGroup.blocksRaycasts = true;
 			SetText(string.Format(prizeTextTemplate, sender.extraBonusSum));
 		}
 
 		public void RevealPrizeButtonClickedHandler()
 		{
-			gameObject.SetActive(false);
+			canvasGroup.alpha = 0f;
+			canvasGroup.blocksRaycasts = false;
 		}
 
 		private void SetText(string text)

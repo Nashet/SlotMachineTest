@@ -1,7 +1,8 @@
 ﻿using Nashet.Contracts.Patterns;
 using Nashet.SlotMachine.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
-using System.Threading.Tasks;
+using System.Collections;
+using UnityEngine;
 
 namespace Nashet.SlotMachine.Gameplay.Models
 {
@@ -30,6 +31,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 
 		private GameplayConfig gameplayConfig;
 		private IFakeRandomStrategy<SymbolConfig> randomStrategy;
+		private CoroutineHelper coroutineHelper;
 		private SymbolConfig _selectedSymbol;
 		private SymbolConfig _decorativeSymbol;
 
@@ -37,20 +39,22 @@ namespace Nashet.SlotMachine.Gameplay.Models
 		{
 			this.gameplayConfig = gameplayConfig;
 			this.randomStrategy = randomStrategy;
+			var gameObject = new GameObject("CoroutineHolder");
+			coroutineHelper = gameObject.AddComponent<CoroutineHelper>();
 		}
 
 		public void StartNewRound()
 		{
-			SpinReel();
+			coroutineHelper.MakeCoroutine(SpinReel());
 		}
-		private async void SpinReel()
+		private IEnumerator SpinReel()
 		{
 			randomStrategy.Reset();
 
 			while (!randomStrategy.IsFinished)
 			{
 				decorativeSymbol = randomStrategy.Get();
-				await Task.Delay((int)(gameplayConfig.oneSymbolSpinTime * 1000));
+				yield return new WaitForSeconds(gameplayConfig.oneSymbolSpinTime);
 			}
 
 			selectedSymbol = decorativeSymbol;

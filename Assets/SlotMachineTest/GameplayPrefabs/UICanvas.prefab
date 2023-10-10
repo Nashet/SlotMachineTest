@@ -345,6 +345,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7002655757270574746, guid: 2538373f6ff3e1d42a8dc9af18bfaec7, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7376995181370189194, guid: 2538373f6ff3e1d42a8dc9af18bfaec7, type: 3}
       propertyPath: m_Name
       value: RevealPrizeWindow
