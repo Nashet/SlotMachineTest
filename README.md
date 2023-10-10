@@ -1,3 +1,3 @@
-# SlotMachineTest
+# SlotMachineNetTest
 
-Build is here https://nashet.github.io/SlotMachineTest/WebGL/index.html
+Build is here https://nashet.github.io/SlotMachineNetTest/WebGL/index.html
