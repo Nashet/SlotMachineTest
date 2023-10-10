@@ -10,7 +10,7 @@ namespace Nashet.SlotMachine.Gameplay.Views
 		[SerializeField] private Text prizeText;
 		[SerializeField] private string prizeTextTemplate;
 		[SerializeField] private float openingDelay;
-		
+
 		public void PropertyChangedHandler(IExtraBonusWindowViewModel sender, string propertyName)
 		{
 			if (propertyName == nameof(IExtraBonusWindowViewModel.extraBonusSum))
@@ -39,6 +39,16 @@ namespace Nashet.SlotMachine.Gameplay.Views
 		private void SetText(string text)
 		{
 			prizeText.text = text;
+		}
+
+		public void SubscribeTo(IExtraBonusWindowViewModel sender)
+		{
+			sender.OnPropertyChanged += PropertyChangedHandler;
+		}
+
+		public void UnSubscribeFrom(IExtraBonusWindowViewModel sender)
+		{
+			sender.OnPropertyChanged -= PropertyChangedHandler;
 		}
 	}
 }

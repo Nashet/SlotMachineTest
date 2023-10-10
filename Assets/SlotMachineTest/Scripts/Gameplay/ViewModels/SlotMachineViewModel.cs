@@ -17,8 +17,8 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 	{
 		public event PropertyChangedEventHandler<ISlotMachineViewModel> OnPropertyChanged;
 
-		public int lastSpinScores => model.lastSpinScores;
-		public float extraBonusSum => model.extraBonusSum;
+		public int lastSpinScores => slotMachineModel.lastSpinScores;
+		public float extraBonusSum => slotMachineModel.extraBonusSum;
 
 		[SerializeField] private PlayerInput playerInput;
 		[SerializeField] private PlayerSoundsView playerSoundsView;
@@ -26,7 +26,7 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		[SerializeField] private List<ReelViewModel> reelVMlList = new();
 		[SerializeField] private string configHolderName;
 
-		private ISlotMachineModel model;
+		private ISlotMachineModel slotMachineModel;
 
 		private void Awake()
 		{
@@ -35,34 +35,36 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		}
 		public void Initialize(GameplayConfig gameplayConfig)
 		{
-			model = new SlotMachineModel(gameplayConfig, reelVMlList);
-			model.OnPropertyChanged += PropertyChangedHandler;
+			slotMachineModel = new SlotMachineModel(gameplayConfig, reelVMlList);
 			playerInput.OnSpinButtonClicked += OnSpinButtonClickedHandler;
-			OnPropertyChanged += playerSoundsView.PropertyChangedHandler;
-			extraBonusWindowViewModel.Initialize(model);
+			this.SubscribeTo(slotMachineModel);
+			playerSoundsView.SubscribeTo(this);
+			extraBonusWindowViewModel.Initialize(slotMachineModel);
+
 			for (int i = 0; i < reelVMlList.Count; i++)
 			{
-				var item = reelVMlList[i];
-				item.OnPropertyChanged += PropertyChangedHandler;
-				item.Initialize(gameplayConfig, playerSoundsView, model.reelModelsList[i], this);
+				var reelVM = reelVMlList[i];
+				this.SubscribeTo(reelVM);
+				reelVM.Initialize(gameplayConfig, playerSoundsView, slotMachineModel.reelModelsList[i], this);
 			}
 		}
 
 		private void OnDestroy()
 		{
 			playerInput.OnSpinButtonClicked -= OnSpinButtonClickedHandler;
-			OnPropertyChanged -= playerSoundsView.PropertyChangedHandler;
-			model.OnPropertyChanged -= PropertyChangedHandler;
+			playerSoundsView.UnSubscribeFrom(this);
+
+			this.UnSubscribeFrom(slotMachineModel);
 			for (int i = 0; i < reelVMlList.Count; i++)
 			{
 				var item = reelVMlList[i];
-				item.OnPropertyChanged -= PropertyChangedHandler;
+				this.UnSubscribeFrom(item);
 			}
 		}
 
 		private void OnSpinButtonClickedHandler()
 		{
-			model.StartNewRound();
+			slotMachineModel.StartNewRound();
 		}
 
 		public void RiseOnPropertyChanged(string propertyName)
@@ -74,7 +76,7 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		{
 			if (propertyName == nameof(IReelViewModel.selectedSymbol))
 			{
-				model.HandleReelStop(sender.selectedSymbol);
+				slotMachineModel.HandleReelStop(sender.selectedSymbol);
 			}
 		}
 
@@ -92,6 +94,26 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 				default:
 					break;
 			}
+		}
+
+		public void SubscribeTo(IReelViewModel sender)
+		{
+			sender.OnPropertyChanged += PropertyChangedHandler;
+		}
+
+		public void UnSubscribeFrom(IReelViewModel sender)
+		{
+			sender.OnPropertyChanged -= PropertyChangedHandler;
+		}
+
+		public void SubscribeTo(ISlotMachineModel sender)
+		{
+			sender.OnPropertyChanged += PropertyChangedHandler;
+		}
+
+		public void UnSubscribeFrom(ISlotMachineModel sender)
+		{
+			sender.OnPropertyChanged -= PropertyChangedHandler;
 		}
 	}
 }

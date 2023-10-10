@@ -69,5 +69,25 @@ namespace Nashet.SlotMachine.Gameplay.Views
 				soundsQueue.Clear();
 			}
 		}
+
+		public void SubscribeTo(ISlotMachineViewModel sender)
+		{
+			sender.OnPropertyChanged += PropertyChangedHandler;
+		}
+
+		public void SubscribeTo(IReelViewModel sender)
+		{
+			sender.OnPropertyChanged += PropertyChangedHandler;
+		}
+
+		public void UnSubscribeFrom(ISlotMachineViewModel sender)
+		{
+			sender.OnPropertyChanged -= PropertyChangedHandler;
+		}
+
+		public void UnSubscribeFrom(IReelViewModel sender)
+		{
+			sender.OnPropertyChanged -= PropertyChangedHandler;
+		}
 	}
 }

@@ -17,15 +17,14 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		{
 			this.extraBonusWindowView = GetComponent<IExtraBonusWindowView>();
 			this.slotMachineModel = slotMachineModel;
-
-			OnPropertyChanged += extraBonusWindowView.PropertyChangedHandler;
-			slotMachineModel.OnPropertyChanged += PropertyChangedHandler;
+			SubscribeTo(slotMachineModel);
+			extraBonusWindowView.SubscribeTo(this);
 		}
 
 		private void OnDestroy()
 		{
-			OnPropertyChanged -= extraBonusWindowView.PropertyChangedHandler;
-			slotMachineModel.OnPropertyChanged -= PropertyChangedHandler;
+			extraBonusWindowView.UnSubscribeFrom(this);
+			this.UnSubscribeFrom(slotMachineModel);
 		}
 
 		public void PropertyChangedHandler(ISlotMachineModel sender, string propertyName)
@@ -42,6 +41,16 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		public void RiseOnPropertyChanged(string propertyName)
 		{
 			OnPropertyChanged?.Invoke(this, propertyName);
+		}
+
+		public void SubscribeTo(ISlotMachineModel sender)
+		{
+			sender.OnPropertyChanged += PropertyChangedHandler;
+		}
+
+		public void UnSubscribeFrom(ISlotMachineModel sender)
+		{
+			sender.OnPropertyChanged -= PropertyChangedHandler;
 		}
 	}
 }

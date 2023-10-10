@@ -7,5 +7,7 @@
 	public interface ISubscriber<T>
 	{
 		void PropertyChangedHandler(T sender, string propertyName);
+		void SubscribeTo(T sender);
+		void UnSubscribeFrom(T sender);
 	}
 }
