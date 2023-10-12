@@ -10,6 +10,9 @@ namespace Nashet.SlotMachine.Gameplay.Models
 	public class NetworkSymbolsModel : INetworkSymbolsModel
 	{
 		public bool IsInitialized => socketClient != null && socketClient.IsConnected;
+
+		public int bonusPrize { get; private set; }
+
 		private const string symbolsChannel = "symbols";
 		private const string orderSymbolsCommand = "gime new symbols plz";
 		private ISocketClientService socketClient;
@@ -40,16 +43,28 @@ namespace Nashet.SlotMachine.Gameplay.Models
 		{
 			if (socketName == symbolsChannel && data.msg != orderSymbolsCommand)
 			{
-				var receivedSymbols = JsonConvert.DeserializeObject<List<List<string>>>(data.msg);
-
-				for (int i = 0; i < receivedSymbols.Count; i++)
+				if (data.id == "bonus")
 				{
-					availableSymbols[i].Clear();
-					List<string> item = receivedSymbols[i];
-					foreach (var symbol in item)
-					{
-						availableSymbols[i].Add(symbolsLookup[symbol]);
-					}
+					bonusPrize = JsonConvert.DeserializeObject<int>(data.msg);
+				}
+				else if (data.id == "serversymbols")
+				{
+					HandleSymbols(data);
+				}
+			}
+		}
+
+		private void HandleSymbols(SocketData data)
+		{
+			var receivedSymbols = JsonConvert.DeserializeObject<List<List<string>>>(data.msg);
+
+			for (int i = 0; i < receivedSymbols.Count; i++)
+			{
+				availableSymbols[i].Clear();
+				List<string> item = receivedSymbols[i];
+				foreach (var symbol in item)
+				{
+					availableSymbols[i].Add(symbolsLookup[symbol]);
 				}
 			}
 		}
@@ -86,6 +101,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 
 		public void Prepare()
 		{
+			bonusPrize = 0;
 			var data = new SocketData { id = "client", msg = JsonConvert.SerializeObject(orderSymbolsCommand) };
 			socketClient.Send(symbolsChannel, data);
 		}

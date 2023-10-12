@@ -36,17 +36,33 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			if (data.msg == orderSymbolsCommand)
 			{
 				var randomRespond = new List<List<string>> { GetRandomCollection(fakeRespond), GetRandomCollection(fakeRespond), GetRandomCollection(fakeRespond) };
-				Send(JsonConvert.SerializeObject(randomRespond));
+
+				AddBonusPrize(randomRespond);
+
+				Send("serversymbols", JsonConvert.SerializeObject(randomRespond));
 			}
 		}
 
-		private void Send(string message)
+		private void AddBonusPrize(List<List<string>> randomRespond)
+		{
+			var chance = random.Next(2);
+			if (chance == 1)
+			{
+				foreach (var item in randomRespond)
+				{
+					item.Add("2"); //just to fake extra bonus
+				}
+				var bonusPrize = 10000;
+				Send("bonus", bonusPrize.ToString());
+			}
+		}
+
+		private void Send(string type, string message)
 		{
 			var data = new SocketData
 			{
-				id = "server",
+				id = type,
 				msg = message
-
 			};
 			socketService.Send(roomName, data);
 		}

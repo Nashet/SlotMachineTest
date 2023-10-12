@@ -83,9 +83,10 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			}
 
 			lastSpinScores = IsAllSymbolsSame() ? selectedSymbols[0].prize3InRow : 0;
-			if (lastSpinScores > 0 && gameplayConfig.extraBonusSymbol.Contains(symbolConfig))
+
+			if (networkSymbols.bonusPrize != 0)
 			{
-				extraBonusSum = symbolConfig.prize3InRow * gameplayConfig.extraBonusMultiplier;
+				extraBonusSum = networkSymbols.bonusPrize;
 			}
 			isSpinInProgress = false;
 		}
