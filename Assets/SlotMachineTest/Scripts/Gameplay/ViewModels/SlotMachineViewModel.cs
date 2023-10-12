@@ -1,5 +1,6 @@
 using Nashet.Common.Services;
 using Nashet.Contracts.Patterns;
+using Nashet.Contracts.Services;
 using Nashet.SlotMachine.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
 using Nashet.SlotMachine.Gameplay.InputView;
@@ -23,19 +24,21 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		[SerializeField] private PlayerInput playerInput;
 		[SerializeField] private PlayerSoundsView playerSoundsView;
 		[SerializeField] private ExtraBonusWindowViewModel extraBonusWindowViewModel;
-		[SerializeField] private List<ReelViewModel> reelVMlList = new();
+		[SerializeField] private List<ReelViewModel> reelVMlList = new List<ReelViewModel>();
 		[SerializeField] private string configHolderName;
-
 		private ISlotMachineModel slotMachineModel;
+		internal ISocketClientService socketService;
 
 		private void Awake()
 		{
 			var configService = new SOConfigService(configHolderName);
 			Initialize(configService.GetConfig<GameplayConfig>());
 		}
+
 		public void Initialize(GameplayConfig gameplayConfig)
 		{
-			slotMachineModel = new SlotMachineModel(gameplayConfig, reelVMlList);
+			socketService = new SocketIOService();
+			slotMachineModel = new SlotMachineModel(gameplayConfig, reelVMlList, socketService);
 			playerInput.OnSpinButtonClicked += OnSpinButtonClickedHandler;
 			this.SubscribeTo(slotMachineModel);
 			playerSoundsView.SubscribeTo(this);

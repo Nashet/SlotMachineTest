@@ -1,0 +1,64 @@
+﻿using Nashet.Contracts.Patterns;
+using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Gameplay.Contracts;
+using System.Collections.Generic;
+
+namespace Nashet.SlotMachine.Gameplay.Models
+{
+	/// <summary>
+	/// Gives collection of pseudo random symbols
+	/// </summary>
+	public class NetworkRandomStrategy : IFakeRandomStrategy<SymbolConfig>
+	{
+		public bool IsFinished => counter >= availableSymbols.Count && availableSymbols.Count != 0;
+
+		public bool IsInitialized => networkSymbols != null && networkSymbols.IsInitialized;
+
+
+		private INetworkSymbolsModel networkSymbols;
+		private int id;
+		private int counter;
+		private IEnumerator<SymbolConfig> symbolEnumerator;
+		private List<SymbolConfig> availableSymbols = new List<SymbolConfig>();
+
+		public NetworkRandomStrategy(GameplayConfig gameplayConfig, int id, INetworkSymbolsModel networkSymbols)
+		{
+			this.networkSymbols = networkSymbols;
+			this.id = id;
+			symbolEnumerator = GetSymbols().GetEnumerator();
+		}
+
+		public void Reset()
+		{
+			counter = 0;
+		}
+
+		public SymbolConfig Get()
+		{
+			availableSymbols = networkSymbols.GetSymbols(id);
+			if (availableSymbols.Count == 0)
+				return null; //meaning data is not received yet
+
+			symbolEnumerator.MoveNext();
+
+			SymbolConfig symbol = symbolEnumerator.Current;
+			return symbol;
+		}
+
+		private IEnumerable<SymbolConfig> GetSymbols()
+		{
+			int i = 0;
+			while (true)
+			{
+				counter++;
+				yield return availableSymbols[i];
+
+				i++;
+				if (i >= availableSymbols.Count)
+				{
+					i = 0;
+				}
+			}
+		}
+	}
+}

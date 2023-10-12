@@ -8,6 +8,7 @@ namespace Nashet.SlotMachine.Configs
 	[CreateAssetMenu(fileName = nameof(SymbolConfig), menuName = "Solution/" + nameof(SymbolConfig))]
 	public class SymbolConfig : ScriptableObject
 	{
+		public string id; //should be uniqe, might be used for serialization
 		public Sprite sprite;
 		public int prize3InRow;
 	}

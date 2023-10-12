@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Nashet.SlotMachine.Configs
 {
@@ -17,6 +16,7 @@ namespace Nashet.SlotMachine.Configs
 		public List<SymbolConfig> availableSymbols;
 		public List<SymbolConfig> extraBonusSymbol;
 		public float extraBonusMultiplier;
+		public string WSURL = "http://localhost:3000";
 	}
 }
 

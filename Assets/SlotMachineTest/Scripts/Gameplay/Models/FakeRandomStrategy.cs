@@ -3,11 +3,13 @@ using Nashet.SlotMachine.Configs;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nashet.SlotMachine.Gameplay.ViewModels
+namespace Nashet.SlotMachine.Gameplay.Models
 {
 	public class FakeRandomStrategy : IFakeRandomStrategy<SymbolConfig>
 	{
 		public bool IsFinished => counter >= expectedSequenceSize;
+
+		public bool IsInitialized => true;
 
 		private GameplayConfig gameplayConfig;
 		private int counter;
@@ -18,7 +20,6 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		{
 			this.gameplayConfig = gameplayConfig;
 			symbolEnumerator = GetSymbols().GetEnumerator();
-
 		}
 
 		public void Reset()

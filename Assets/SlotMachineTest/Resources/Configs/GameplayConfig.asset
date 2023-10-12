@@ -22,3 +22,4 @@ MonoBehaviour:
   extraBonusSymbol:
   - {fileID: 11400000, guid: 4cdd7c27c5f7dc54998a357e06a4590c, type: 2}
   extraBonusMultiplier: 5
+  WSURL: http://localhost:3000/

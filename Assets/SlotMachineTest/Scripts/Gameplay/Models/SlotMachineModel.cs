@@ -1,9 +1,9 @@
 ﻿using Nashet.Contracts.Patterns;
+using Nashet.Contracts.Services;
 using Nashet.SlotMachine.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
-using Nashet.SlotMachine.Gameplay.ViewModels;
+using Socket.WebSocket4Net.System.Linq;
 using System.Collections.Generic;
-
 
 namespace Nashet.SlotMachine.Gameplay.Models
 {
@@ -14,6 +14,9 @@ namespace Nashet.SlotMachine.Gameplay.Models
 		private GameplayConfig gameplayConfig;
 
 		public IList<IReelModel> reelModelsList { get; protected set; }
+
+		private NetworkSymbolsModel networkSymbols;
+
 		public SymbolConfig symbolConfig => selectedSymbols[0];
 
 		private List<SymbolConfig> selectedSymbols = new List<SymbolConfig>();
@@ -39,14 +42,20 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			}
 		}
 
-		public SlotMachineModel(GameplayConfig gameplayConfig, IEnumerable<IReelViewModel> reelVMList)
+		public SlotMachineModel(GameplayConfig gameplayConfig, IEnumerable<IReelViewModel> reelVMList, ISocketClientService socketClient)
 		{
 			this.gameplayConfig = gameplayConfig;
 			reelModelsList = new List<IReelModel>();
+
+			networkSymbols = new NetworkSymbolsModel(gameplayConfig, socketClient, reelVMList.Count((x) => true));
+
+			var id = 0;
 			foreach (var item in reelVMList)
 			{
-				var randomSymbolStrategy = new FakeRandomStrategy(gameplayConfig);
+				var randomSymbolStrategy = new NetworkRandomStrategy(gameplayConfig, id, networkSymbols);
+
 				reelModelsList.Add(new ReelModel(randomSymbolStrategy, gameplayConfig));
+				id++;
 			}
 		}
 
@@ -56,6 +65,8 @@ namespace Nashet.SlotMachine.Gameplay.Models
 				return;
 			isSpinInProgress = true;
 			selectedSymbols.Clear();
+			if (networkSymbols != null)
+				networkSymbols.Prepare();
 			foreach (var item in reelModelsList)
 			{
 				item.StartNewRound();
@@ -85,7 +96,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			for (int i = 0; i < selectedSymbols.Count; i++)
 			{
 				SymbolConfig item = selectedSymbols[i];
-				if (item != firstSymbol)
+				if (item.id != firstSymbol.id)
 					return false;
 			}
 			return true;

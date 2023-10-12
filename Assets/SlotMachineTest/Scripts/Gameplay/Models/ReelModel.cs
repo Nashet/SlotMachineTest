@@ -49,11 +49,22 @@ namespace Nashet.SlotMachine.Gameplay.Models
 		}
 		private IEnumerator SpinReel()
 		{
+			while (!randomStrategy.IsInitialized)
+			{
+				//todo handle if server doesnt respond
+				yield return new WaitForSeconds(gameplayConfig.oneSymbolSpinTime);
+			}
+
 			randomStrategy.Reset();
 
 			while (!randomStrategy.IsFinished)
 			{
-				decorativeSymbol = randomStrategy.Get();
+				var nextSymbol = randomStrategy.Get();
+				if (nextSymbol != null) //null means that sequence isnt ready yet
+				{
+					decorativeSymbol = nextSymbol;
+				}
+
 				yield return new WaitForSeconds(gameplayConfig.oneSymbolSpinTime);
 			}
 

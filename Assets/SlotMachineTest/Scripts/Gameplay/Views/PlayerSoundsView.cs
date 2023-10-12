@@ -16,7 +16,7 @@ namespace Nashet.SlotMachine.Gameplay.Views
 		[SerializeField] private SoundConfig extraBonus;
 
 		private AudioSource audioSource;
-		private List<SoundConfig> soundsQueue = new();
+		private List<SoundConfig> soundsQueue = new List<SoundConfig>();
 
 		private void Start()
 		{

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9586f18a860886439ab2beac817617f, type: 3}
   m_Name: Symbol3Config
   m_EditorClassIdentifier: 
+  id: 3
   sprite: {fileID: 21300000, guid: aa5b9413618aa9849b9f30dbd69ab7b7, type: 3}
-  onCollectedSound: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
   prize3InRow: 10

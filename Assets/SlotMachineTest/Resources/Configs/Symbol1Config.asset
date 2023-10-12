@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9586f18a860886439ab2beac817617f, type: 3}
   m_Name: Symbol1Config
   m_EditorClassIdentifier: 
+  id: 1
   sprite: {fileID: 21300000, guid: 90dab5a65a9b83f4099f84e4be6b8232, type: 3}
-  onCollectedSound: {fileID: 0}
   prize3InRow: 1000

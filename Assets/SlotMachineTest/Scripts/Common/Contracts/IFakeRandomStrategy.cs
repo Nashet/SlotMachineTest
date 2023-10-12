@@ -5,5 +5,6 @@
 		bool IsFinished { get; }
 		T Get();
 		void Reset();
+		bool IsInitialized { get; }
 	}
 }
