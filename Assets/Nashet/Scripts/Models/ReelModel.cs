@@ -1,12 +1,13 @@
 ﻿using Assets.Nashet.Scripts.Contracts.Models;
 using Assets.Nashet.Scripts.Data.Configs;
 using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
+using Assets.Nashet.Scripts.Universal.Models;
 using System.Collections;
 using UnityEngine;
 
 namespace Assets.Nashet.Scripts.Models
 {
-	public class ReelModel : IReelModel
+	public class ReelModel : Model, IReelModel
 	{
 		public event PropertyChangedEventHandler<IReelModel> OnPropertyChanged;
 

@@ -3,12 +3,13 @@ using Assets.Nashet.Scripts.Contracts.ViewModels;
 using Assets.Nashet.Scripts.Contracts.Views;
 using Assets.Nashet.Scripts.Data.Configs;
 using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
+using Assets.Nashet.Scripts.Universal.ViewModels;
 using Assets.Nashet.Scripts.Views;
 using UnityEngine;
 
 namespace Assets.Nashet.Scripts.ViewModels
 {
-	public class ReelViewModel : MonoBehaviour, IReelViewModel
+	public class ReelViewModel : MonoViewModel, IReelViewModel
 	{
 		public event PropertyChangedEventHandler<IReelViewModel> OnPropertyChanged;
 		public SymbolData decorativeSymbol => reelModel.decorativeSymbol;

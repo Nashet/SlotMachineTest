@@ -19,8 +19,7 @@ namespace Assets.Nashet.Scripts.Data.Configs
 		public string WSURL = "http://localhost:3000";
 	}
 }
-//todo remove project name from namespace
-////todo  add basic class for yeach type?
+
 //todo add rective property
 //todo add assemblies
-//todocheck non event communictaiein
+//todo check non event communictaiein

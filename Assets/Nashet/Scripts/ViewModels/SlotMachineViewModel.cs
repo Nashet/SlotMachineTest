@@ -6,6 +6,7 @@ using Assets.Nashet.Scripts.Models;
 using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
 using Assets.Nashet.Scripts.Universal.Contracts.Services;
 using Assets.Nashet.Scripts.Universal.Services;
+using Assets.Nashet.Scripts.Universal.ViewModels;
 using Assets.Nashet.Scripts.Views;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Assets.Nashet.Scripts.ViewModels
 	/// <summary>
 	/// Purpose of that class is to setup nested view models and own model/view
 	/// </summary>
-	public class SlotMachineViewModel : MonoBehaviour, ISlotMachineViewModel
+	public class SlotMachineViewModel : MonoViewModel, ISlotMachineViewModel
 	{
 		public event PropertyChangedEventHandler<ISlotMachineViewModel> OnPropertyChanged;
 

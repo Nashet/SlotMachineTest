@@ -1,12 +1,13 @@
 ﻿using Assets.Nashet.Scripts.Contracts.ViewModels;
 using Assets.Nashet.Scripts.Contracts.Views;
+using Assets.Nashet.Scripts.Universal.Views;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Nashet.Scripts.Views
 {
-	public class ReelView : MonoBehaviour, IReelView
+	public class ReelView : MonoView, IReelView
 	{
 		[SerializeField] private Image image;
 		[SerializeField] private float transitionDuration;

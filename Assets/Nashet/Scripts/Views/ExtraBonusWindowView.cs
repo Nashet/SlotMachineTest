@@ -1,4 +1,5 @@
 ﻿using Assets.Nashet.Scripts.Contracts.Views;
+using Assets.Nashet.Scripts.Universal.Views;
 using Nashet.Scripts.Contracts.ViewModels;
 using System.Collections;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Assets.Nashet.Scripts.Views
 {
-	public class ExtraBonusWindowView : MonoBehaviour, IExtraBonusWindowView
+	public class ExtraBonusWindowView : MonoView, IExtraBonusWindowView
 	{
 		[SerializeField] private Text prizeText;
 		[SerializeField] private string prizeTextTemplate;

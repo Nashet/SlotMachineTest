@@ -1,6 +1,7 @@
 ﻿using Assets.Nashet.Scripts.Contracts.ViewModels;
 using Assets.Nashet.Scripts.Contracts.Views;
 using Assets.Nashet.Scripts.Data.Configs;
+using Assets.Nashet.Scripts.Universal.Views;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Assets.Nashet.Scripts.Views
 	/// <summary>
 	/// The only purpose of that class is to play sounds
 	/// </summary>
-	public class PlayerSoundsView : MonoBehaviour, IPlayerSoundsView
+	public class PlayerSoundsView : MonoView, IPlayerSoundsView
 	{
 		//todo put it in gameplay config:
 		[SerializeField] private SoundData threeInARow;

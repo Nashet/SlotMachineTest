@@ -1,12 +1,13 @@
 ﻿using Assets.Nashet.Scripts.Contracts.Models;
 using Assets.Nashet.Scripts.Contracts.Views;
 using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
+using Assets.Nashet.Scripts.Universal.ViewModels;
 using Nashet.Scripts.Contracts.ViewModels;
 using UnityEngine;
 
 namespace Assets.Nashet.Scripts.ViewModels
 {
-	public class ExtraBonusWindowViewModel : MonoBehaviour, IExtraBonusWindowViewModel
+	public class ExtraBonusWindowViewModel : MonoViewModel, IExtraBonusWindowViewModel
 	{
 		public event PropertyChangedEventHandler<IExtraBonusWindowViewModel> OnPropertyChanged;
 
