@@ -1,4 +1,4 @@
-﻿using Nashet.SlotMachine.Configs;
+﻿using Nashet.SlotMachine.Data.Configs;
 
 namespace Nashet.SlotMachine.Gameplay.Contracts
 {
@@ -7,6 +7,6 @@ namespace Nashet.SlotMachine.Gameplay.Contracts
 	/// </summary>
 	public interface ISymbolView
 	{
-		SymbolConfig symbolConfig { get; set; }
+		SymbolData symbolConfig { get; set; }
 	}
 }

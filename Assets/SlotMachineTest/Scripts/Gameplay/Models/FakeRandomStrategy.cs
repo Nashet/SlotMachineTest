@@ -1,22 +1,22 @@
 ﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Data.Configs;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Nashet.SlotMachine.Gameplay.Models
 {
-	public class FakeRandomStrategy : IFakeRandomStrategy<SymbolConfig>
+	public class FakeRandomStrategy : IFakeRandomStrategy<SymbolData>
 	{
 		public bool IsFinished => counter >= expectedSequenceSize;
 
 		public bool IsInitialized => true;
 
-		private GameplayConfig gameplayConfig;
+		private GameplayData gameplayConfig;
 		private int counter;
 		private int expectedSequenceSize;
-		private IEnumerator<SymbolConfig> symbolEnumerator;
+		private IEnumerator<SymbolData> symbolEnumerator;
 
-		public FakeRandomStrategy(GameplayConfig gameplayConfig)
+		public FakeRandomStrategy(GameplayData gameplayConfig)
 		{
 			this.gameplayConfig = gameplayConfig;
 			symbolEnumerator = GetSymbols().GetEnumerator();
@@ -33,15 +33,15 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			counter = 0;
 		}
 
-		public SymbolConfig Get()
+		public SymbolData Get()
 		{
 			symbolEnumerator.MoveNext();
 
-			SymbolConfig symbol = symbolEnumerator.Current;
+			SymbolData symbol = symbolEnumerator.Current;
 			return symbol;
 		}
 
-		private IEnumerable<SymbolConfig> GetSymbols()
+		private IEnumerable<SymbolData> GetSymbols()
 		{
 			int i = 0;
 			while (true)

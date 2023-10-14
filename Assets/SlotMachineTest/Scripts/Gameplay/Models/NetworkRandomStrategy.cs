@@ -1,5 +1,5 @@
 ﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Data.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
 using System.Collections.Generic;
 
@@ -8,7 +8,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 	/// <summary>
 	/// Gives collection of pseudo random symbols
 	/// </summary>
-	public class NetworkRandomStrategy : IFakeRandomStrategy<SymbolConfig>
+	public class NetworkRandomStrategy : IFakeRandomStrategy<SymbolData>
 	{
 		public bool IsFinished => counter >= availableSymbols.Count && availableSymbols.Count != 0;
 
@@ -18,10 +18,10 @@ namespace Nashet.SlotMachine.Gameplay.Models
 		private INetworkSymbolsModel networkSymbols;
 		private int id;
 		private int counter;
-		private IEnumerator<SymbolConfig> symbolEnumerator;
-		private List<SymbolConfig> availableSymbols = new List<SymbolConfig>();
+		private IEnumerator<SymbolData> symbolEnumerator;
+		private List<SymbolData> availableSymbols = new List<SymbolData>();
 
-		public NetworkRandomStrategy(GameplayConfig gameplayConfig, int id, INetworkSymbolsModel networkSymbols)
+		public NetworkRandomStrategy(GameplayData gameplayConfig, int id, INetworkSymbolsModel networkSymbols)
 		{
 			this.networkSymbols = networkSymbols;
 			this.id = id;
@@ -33,7 +33,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			counter = 0;
 		}
 
-		public SymbolConfig Get()
+		public SymbolData Get()
 		{
 			availableSymbols = networkSymbols.GetSymbols(id);
 			if (availableSymbols.Count == 0)
@@ -41,11 +41,11 @@ namespace Nashet.SlotMachine.Gameplay.Models
 
 			symbolEnumerator.MoveNext();
 
-			SymbolConfig symbol = symbolEnumerator.Current;
+			SymbolData symbol = symbolEnumerator.Current;
 			return symbol;
 		}
 
-		private IEnumerable<SymbolConfig> GetSymbols()
+		private IEnumerable<SymbolData> GetSymbols()
 		{
 			int i = 0;
 			while (true)

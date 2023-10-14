@@ -1,5 +1,5 @@
-﻿using Nashet.Contracts.Services;
-using Nashet.SlotMachine.Configs;
+﻿using Nashet.Common.Data;
+using Nashet.Contracts.Services;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +15,7 @@ namespace Nashet.Common.Services
 
 		public SOConfigService(string configHolderName)
 		{
-			var configHolder = Resources.Load<ConfigHolder>(configHolderName);
+			var configHolder = Resources.Load<ConfigHolderData>(configHolderName);
 
 			foreach (var item in configHolder.AllConfigs)
 			{

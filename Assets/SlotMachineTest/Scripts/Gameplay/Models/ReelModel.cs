@@ -1,5 +1,5 @@
 ﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Data.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
 using System.Collections;
 using UnityEngine;
@@ -10,7 +10,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 	{
 		public event PropertyChangedEventHandler<IReelModel> OnPropertyChanged;
 
-		public SymbolConfig selectedSymbol
+		public SymbolData selectedSymbol
 		{
 			get => _selectedSymbol;
 			private set
@@ -19,7 +19,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 				RiseOnPropertyChanged(nameof(selectedSymbol));
 			}
 		}
-		public SymbolConfig decorativeSymbol
+		public SymbolData decorativeSymbol
 		{
 			get => _decorativeSymbol;
 			private set
@@ -29,13 +29,13 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			}
 		}
 
-		private GameplayConfig gameplayConfig;
-		private IFakeRandomStrategy<SymbolConfig> randomStrategy;
+		private GameplayData gameplayConfig;
+		private IFakeRandomStrategy<SymbolData> randomStrategy;
 		private CoroutineHelper coroutineHelper;
-		private SymbolConfig _selectedSymbol;
-		private SymbolConfig _decorativeSymbol;
+		private SymbolData _selectedSymbol;
+		private SymbolData _decorativeSymbol;
 
-		public ReelModel(IFakeRandomStrategy<SymbolConfig> randomStrategy, GameplayConfig gameplayConfig)
+		public ReelModel(IFakeRandomStrategy<SymbolData> randomStrategy, GameplayData gameplayConfig)
 		{
 			this.gameplayConfig = gameplayConfig;
 			this.randomStrategy = randomStrategy;

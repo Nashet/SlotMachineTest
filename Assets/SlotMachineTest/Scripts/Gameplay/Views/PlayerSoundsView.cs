@@ -1,4 +1,4 @@
-﻿using Nashet.SlotMachine.Configs;
+﻿using Nashet.SlotMachine.Data.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,19 +11,19 @@ namespace Nashet.SlotMachine.Gameplay.Views
 	public class PlayerSoundsView : MonoBehaviour, IPlayerSoundsView
 	{
 		//todo put it in gameplay config:
-		[SerializeField] private SoundConfig threeInARow;
-		[SerializeField] private SoundConfig reelTick;
-		[SerializeField] private SoundConfig extraBonus;
+		[SerializeField] private SoundData threeInARow;
+		[SerializeField] private SoundData reelTick;
+		[SerializeField] private SoundData extraBonus;
 
 		private AudioSource audioSource;
-		private List<SoundConfig> soundsQueue = new List<SoundConfig>();
+		private List<SoundData> soundsQueue = new List<SoundData>();
 
 		private void Start()
 		{
 			audioSource = GetComponent<AudioSource>();
 		}
 
-		private void AddInQueue(SoundConfig sound)
+		private void AddInQueue(SoundData sound)
 		{
 			soundsQueue.Add(sound);
 		}

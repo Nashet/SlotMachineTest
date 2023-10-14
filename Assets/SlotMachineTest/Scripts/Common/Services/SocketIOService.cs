@@ -1,4 +1,5 @@
-﻿using Nashet.Contracts.Services;
+﻿using Nashet.Common.Data;
+using Nashet.Contracts.Services;
 using Socket.Newtonsoft.Json;
 using Socket.Quobject.SocketIoClientDotNet.Client;
 using System.Collections.Generic;

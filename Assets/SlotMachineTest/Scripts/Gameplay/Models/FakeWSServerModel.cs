@@ -1,4 +1,4 @@
-﻿using Nashet.Common.Services;
+﻿using Nashet.Common.Data;
 using Nashet.Contracts.Services;
 using Nashet.SlotMachine.Gameplay.ViewModels;
 using Socket.Newtonsoft.Json;

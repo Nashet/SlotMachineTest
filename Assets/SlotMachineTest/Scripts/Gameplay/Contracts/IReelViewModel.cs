@@ -1,11 +1,11 @@
 ﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Data.Configs;
 
 namespace Nashet.SlotMachine.Gameplay.Contracts
 {
 	public interface IReelViewModel : IPropertyChangeNotifier<IReelViewModel>, ISubscriber<IReelModel>
 	{
-		SymbolConfig decorativeSymbol { get; }
-		SymbolConfig selectedSymbol { get; }
+		SymbolData decorativeSymbol { get; }
+		SymbolData selectedSymbol { get; }
 	}
 }

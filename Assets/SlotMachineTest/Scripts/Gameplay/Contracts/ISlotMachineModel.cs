@@ -1,5 +1,5 @@
 ﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Data.Configs;
 using System.Collections.Generic;
 
 namespace Nashet.SlotMachine.Gameplay.Contracts
@@ -9,10 +9,10 @@ namespace Nashet.SlotMachine.Gameplay.Contracts
 		int lastSpinScores { get; }
 
 		IList<IReelModel> reelModelsList { get; }
-		SymbolConfig symbolConfig { get; }
+		SymbolData symbolConfig { get; }
 		float extraBonusSum { get; }
 
-		void HandleReelStop(SymbolConfig selectedSymbol);
+		void HandleReelStop(SymbolData selectedSymbol);
 		void StartNewRound();
 	}
 }

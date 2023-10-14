@@ -1,4 +1,4 @@
-using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Data.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ namespace Nashet.SlotMachine.Gameplay.Views
 	/// </summary>
 	public class SymbolView : MonoBehaviour, ISymbolView
 	{
-		public SymbolConfig symbolConfig
+		public SymbolData symbolConfig
 		{
 			get
 			{

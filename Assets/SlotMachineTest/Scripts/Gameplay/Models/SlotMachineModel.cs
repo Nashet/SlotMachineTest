@@ -1,6 +1,6 @@
 ﻿using Nashet.Contracts.Patterns;
 using Nashet.Contracts.Services;
-using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Data.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
 using Socket.WebSocket4Net.System.Linq;
 using System.Collections.Generic;
@@ -11,15 +11,15 @@ namespace Nashet.SlotMachine.Gameplay.Models
 	{
 		public event PropertyChangedEventHandler<ISlotMachineModel> OnPropertyChanged;
 
-		private GameplayConfig gameplayConfig;
+		private GameplayData gameplayConfig;
 
 		public IList<IReelModel> reelModelsList { get; protected set; }
 
 		private NetworkSymbolsModel networkSymbols;
 
-		public SymbolConfig symbolConfig => selectedSymbols[0];
+		public SymbolData symbolConfig => selectedSymbols[0];
 
-		private List<SymbolConfig> selectedSymbols = new List<SymbolConfig>();
+		private List<SymbolData> selectedSymbols = new List<SymbolData>();
 		private bool isSpinInProgress;
 		private float _extraBonusSum;
 		private int _lastSpinScores;
@@ -42,7 +42,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			}
 		}
 
-		public SlotMachineModel(GameplayConfig gameplayConfig, IEnumerable<IReelViewModel> reelVMList, ISocketClientService socketClient)
+		public SlotMachineModel(GameplayData gameplayConfig, IEnumerable<IReelViewModel> reelVMList, ISocketClientService socketClient)
 		{
 			this.gameplayConfig = gameplayConfig;
 			reelModelsList = new List<IReelModel>();
@@ -73,7 +73,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			}
 		}
 
-		public void HandleReelStop(SymbolConfig selectedSymbol)
+		public void HandleReelStop(SymbolData selectedSymbol)
 		{
 			selectedSymbols.Add(selectedSymbol);
 			var allReelsHaveStopped = selectedSymbols.Count == reelModelsList.Count;
@@ -96,7 +96,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			var firstSymbol = selectedSymbols[0];
 			for (int i = 0; i < selectedSymbols.Count; i++)
 			{
-				SymbolConfig item = selectedSymbols[i];
+				SymbolData item = selectedSymbols[i];
 				if (item.id != firstSymbol.id)
 					return false;
 			}

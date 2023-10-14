@@ -1,7 +1,7 @@
 using Nashet.Common.Services;
 using Nashet.Contracts.Patterns;
 using Nashet.Contracts.Services;
-using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Data.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
 using Nashet.SlotMachine.Gameplay.InputView;
 using Nashet.SlotMachine.Gameplay.Models;
@@ -32,10 +32,10 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		private void Awake()
 		{
 			var configService = new SOConfigService(configHolderName);
-			Initialize(configService.GetConfig<GameplayConfig>());
+			Initialize(configService.GetConfig<GameplayData>());
 		}
 
-		public void Initialize(GameplayConfig gameplayConfig)
+		public void Initialize(GameplayData gameplayConfig)
 		{
 			socketService = new SocketIOService();
 			slotMachineModel = new SlotMachineModel(gameplayConfig, reelVMlList, socketService);

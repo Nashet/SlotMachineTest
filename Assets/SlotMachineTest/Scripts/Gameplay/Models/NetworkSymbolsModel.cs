@@ -1,6 +1,6 @@
-﻿using Nashet.Common.Services;
+﻿using Nashet.Common.Data;
 using Nashet.Contracts.Services;
-using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Data.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
 using Socket.Newtonsoft.Json;
 using System.Collections.Generic;
@@ -18,10 +18,10 @@ namespace Nashet.SlotMachine.Gameplay.Models
 		private ISocketClientService socketClient;
 		private bool disposed;
 
-		private Dictionary<string, SymbolConfig> symbolsLookup = new Dictionary<string, SymbolConfig>();
-		private List<List<SymbolConfig>> availableSymbols = new List<List<SymbolConfig>>();
+		private Dictionary<string, SymbolData> symbolsLookup = new Dictionary<string, SymbolData>();
+		private List<List<SymbolData>> availableSymbols = new List<List<SymbolData>>();
 
-		public NetworkSymbolsModel(GameplayConfig gameplayConfig, ISocketClientService socketClientService, int amountOfReels)
+		public NetworkSymbolsModel(GameplayData gameplayConfig, ISocketClientService socketClientService, int amountOfReels)
 		{
 			socketClient = socketClientService;
 
@@ -35,7 +35,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			}
 			for (int i = 0; i < amountOfReels; i++)
 			{
-				availableSymbols.Add(new List<SymbolConfig>());
+				availableSymbols.Add(new List<SymbolData>());
 			}
 		}
 
@@ -69,7 +69,7 @@ namespace Nashet.SlotMachine.Gameplay.Models
 			}
 		}
 
-		public List<SymbolConfig> GetSymbols(int reel)
+		public List<SymbolData> GetSymbols(int reel)
 		{
 			return availableSymbols[reel];
 		}

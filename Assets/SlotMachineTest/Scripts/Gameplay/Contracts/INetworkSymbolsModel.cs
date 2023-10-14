@@ -1,4 +1,4 @@
-﻿using Nashet.SlotMachine.Configs;
+﻿using Nashet.SlotMachine.Data.Configs;
 using System.Collections.Generic;
 
 namespace Nashet.SlotMachine.Gameplay.Contracts
@@ -8,7 +8,7 @@ namespace Nashet.SlotMachine.Gameplay.Contracts
 		bool IsInitialized { get; }
 		int bonusPrize { get; }
 
-		List<SymbolConfig> GetSymbols(int reel);
+		List<SymbolData> GetSymbols(int reel);
 		void Prepare();
 	}
 }

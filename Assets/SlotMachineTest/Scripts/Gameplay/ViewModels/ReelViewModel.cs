@@ -1,5 +1,5 @@
 ﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Configs;
+using Nashet.SlotMachine.Data.Configs;
 using Nashet.SlotMachine.Gameplay.Contracts;
 using Nashet.SlotMachine.Gameplay.Views;
 using UnityEngine;
@@ -9,8 +9,8 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 	public class ReelViewModel : MonoBehaviour, IReelViewModel
 	{
 		public event PropertyChangedEventHandler<IReelViewModel> OnPropertyChanged;
-		public SymbolConfig decorativeSymbol => reelModel.decorativeSymbol;
-		public SymbolConfig selectedSymbol => reelModel.selectedSymbol;
+		public SymbolData decorativeSymbol => reelModel.decorativeSymbol;
+		public SymbolData selectedSymbol => reelModel.selectedSymbol;
 
 		[SerializeField] private ReelView reelView;
 
@@ -18,7 +18,7 @@ namespace Nashet.SlotMachine.Gameplay.ViewModels
 		private IReelModel reelModel;
 		private ISlotMachineViewModel slotMachineViewModel;
 
-		internal void Initialize(GameplayConfig gameplayConfig, IPlayerSoundsView playerSoundsView, IReelModel reelModel, ISlotMachineViewModel slotMachineViewModel)
+		internal void Initialize(GameplayData gameplayConfig, IPlayerSoundsView playerSoundsView, IReelModel reelModel, ISlotMachineViewModel slotMachineViewModel)
 		{
 			this.slotMachineViewModel = slotMachineViewModel;
 			this.playerSoundsView = playerSoundsView;
