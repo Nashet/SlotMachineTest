@@ -1,10 +1,8 @@
-﻿using Nashet.Contracts;
-using Nashet.Contracts.Model;
+﻿using Nashet.Contracts.Model;
 using Nashet.Contracts.Patterns;
 using Nashet.Contracts.Services;
 using Nashet.Contracts.ViewModel;
 using Nashet.Data.Configs;
-using Socket.WebSocket4Net.System.Linq;
 using System.Collections.Generic;
 
 namespace Nashet.Models
@@ -16,8 +14,6 @@ namespace Nashet.Models
 		private GameplayData gameplayConfig;
 
 		public IList<IReelModel> reelModelsList { get; protected set; }
-
-		private NetworkSymbolsModel networkSymbols;
 
 		public SymbolData symbolConfig => selectedSymbols[0];
 
@@ -49,12 +45,10 @@ namespace Nashet.Models
 			this.gameplayConfig = gameplayConfig;
 			reelModelsList = new List<IReelModel>();
 
-			networkSymbols = new NetworkSymbolsModel(gameplayConfig, socketClient, reelVMList.Count((x) => true));
-
 			var id = 0;
 			foreach (var item in reelVMList)
 			{
-				var randomSymbolStrategy = new NetworkRandomStrategy(gameplayConfig, id, networkSymbols);
+				var randomSymbolStrategy = new FakeRandomStrategy(gameplayConfig);
 
 				reelModelsList.Add(new ReelModel(randomSymbolStrategy, gameplayConfig));
 				id++;
@@ -67,8 +61,7 @@ namespace Nashet.Models
 				return;
 			isSpinInProgress = true;
 			selectedSymbols.Clear();
-			if (networkSymbols != null)
-				networkSymbols.Prepare();
+			
 			foreach (var item in reelModelsList)
 			{
 				item.StartNewRound();
@@ -85,11 +78,7 @@ namespace Nashet.Models
 			}
 
 			lastSpinScores = IsAllSymbolsSame() ? selectedSymbols[0].prize3InRow : 0;
-
-			if (networkSymbols.bonusPrize != 0)
-			{
-				extraBonusSum = networkSymbols.bonusPrize;
-			}
+			
 			isSpinInProgress = false;
 		}
 

@@ -1,5 +1,4 @@
-﻿using Nashet.Contracts;
-using Nashet.Contracts.View;
+﻿using Nashet.Contracts.View;
 using Nashet.Contracts.ViewModel;
 using System.Collections;
 using UnityEngine;

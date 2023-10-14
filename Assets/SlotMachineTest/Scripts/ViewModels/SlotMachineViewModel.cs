@@ -1,4 +1,3 @@
-using Nashet.Contracts;
 using Nashet.Contracts.Model;
 using Nashet.Contracts.Patterns;
 using Nashet.Contracts.Services;
@@ -39,7 +38,6 @@ namespace Nashet.ViewModels
 
 		public void Initialize(GameplayData gameplayConfig)
 		{
-			socketService = new SocketIOService();
 			slotMachineModel = new SlotMachineModel(gameplayConfig, reelVMlList, socketService);
 			playerInput.OnSpinButtonClicked += OnSpinButtonClickedHandler;
 			this.SubscribeTo(slotMachineModel);

@@ -1,5 +1,4 @@
-﻿using Nashet.Contracts;
-using Nashet.Contracts.InputView;
+﻿using Nashet.Contracts.InputView;
 using System;
 using UnityEngine;
 

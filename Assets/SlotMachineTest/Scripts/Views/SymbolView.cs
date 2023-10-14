@@ -1,4 +1,3 @@
-using Nashet.Contracts;
 using Nashet.Contracts.View;
 using Nashet.Data.Configs;
 using UnityEngine;

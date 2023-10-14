@@ -1,5 +1,4 @@
-﻿using Nashet.Contracts;
-using Nashet.Contracts.Model;
+﻿using Nashet.Contracts.Model;
 using Nashet.Contracts.Patterns;
 using Nashet.Contracts.View;
 using Nashet.Contracts.ViewModel;
