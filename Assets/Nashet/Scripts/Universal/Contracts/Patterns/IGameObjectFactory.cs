@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Nashet.Contracts.Patterns
+namespace Assets.Nashet.Scripts.Universal.Contracts.Patterns
 {
 	/// <summary>
 	/// Represents factory pattern. Creates standart gameobjects

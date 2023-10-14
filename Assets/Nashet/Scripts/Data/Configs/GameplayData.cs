@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nashet.Data.Configs
+namespace Assets.Nashet.Scripts.Data.Configs
 {
 	/// <summary>
 	/// The purpose of this class is to store configs related to general gameplay.

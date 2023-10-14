@@ -1,8 +1,8 @@
-﻿using Nashet.Contracts.InputView;
+﻿using Assets.Nashet.Scripts.Contracts.InputViews;
 using System;
 using UnityEngine;
 
-namespace Nashet.InputView
+namespace Assets.Nashet.Scripts.InputViews
 {
 	/// <summary>
 	/// The only goal is to handle player input

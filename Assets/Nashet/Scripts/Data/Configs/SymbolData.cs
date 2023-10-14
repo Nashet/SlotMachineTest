@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Nashet.Data.Configs
+namespace Assets.Nashet.Scripts.Data.Configs
 {
 	/// <summary>
 	/// The only purpose of this class is to hold configs for symbols

@@ -1,7 +1,7 @@
-﻿using Nashet.Contracts.Model;
-using Nashet.Contracts.Patterns;
+﻿using Assets.Nashet.Scripts.Contracts.Models;
+using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
 
-namespace Nashet.Contracts.ViewModel
+namespace Nashet.Scripts.Contracts.ViewModels
 {
 	public interface IExtraBonusWindowViewModel : ISubscriber<ISlotMachineModel>, IPropertyChangeNotifier<IExtraBonusWindowViewModel>
 	{

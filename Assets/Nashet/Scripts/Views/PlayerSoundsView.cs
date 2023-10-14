@@ -1,10 +1,10 @@
-﻿using Nashet.Contracts.View;
-using Nashet.Contracts.ViewModel;
-using Nashet.Data.Configs;
+﻿using Assets.Nashet.Scripts.Contracts.ViewModels;
+using Assets.Nashet.Scripts.Contracts.Views;
+using Assets.Nashet.Scripts.Data.Configs;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nashet.Views
+namespace Assets.Nashet.Scripts.Views
 {
 	/// <summary>
 	/// The only purpose of that class is to play sounds

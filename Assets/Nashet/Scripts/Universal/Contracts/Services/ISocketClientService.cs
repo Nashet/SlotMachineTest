@@ -1,7 +1,7 @@
-﻿using Nashet.Data;
+﻿using Assets.Nashet.Scripts.Universal.Data;
 using System;
 
-namespace Nashet.Contracts.Services
+namespace Assets.Nashet.Scripts.Universal.Contracts.Services
 {
 	public delegate void MessageReceivedDelegate(string socketName, SocketData data);
 	public interface ISocketClientService : IService, IDisposable

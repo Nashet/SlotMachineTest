@@ -1,6 +1,6 @@
-﻿using Nashet.Data.Configs;
+﻿using Assets.Nashet.Scripts.Data.Configs;
 
-namespace Nashet.Contracts.View
+namespace Assets.Nashet.Scripts.Contracts.Views
 {
 	/// <summary>
 	/// Represents visualization of a symbol in slot machine

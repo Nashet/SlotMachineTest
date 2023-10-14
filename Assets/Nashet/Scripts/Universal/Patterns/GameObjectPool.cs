@@ -1,8 +1,8 @@
-﻿using Nashet.Contracts.Patterns;
+﻿using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nashet.Patterns
+namespace Assets.Nashet.Scripts.Universal.Patterns
 {
 	/// <summary>
 	/// Simple implementation of object pool pattern

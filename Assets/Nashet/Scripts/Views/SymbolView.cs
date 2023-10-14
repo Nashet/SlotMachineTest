@@ -1,8 +1,8 @@
-using Nashet.Contracts.View;
-using Nashet.Data.Configs;
+using Assets.Nashet.Scripts.Contracts.Views;
+using Assets.Nashet.Scripts.Data.Configs;
 using UnityEngine;
 
-namespace Nashet.Views
+namespace Assets.Nashet.Scripts.Views
 {
 	/// <summary>
 	/// The purpose of this class is to handle visuals of symbols

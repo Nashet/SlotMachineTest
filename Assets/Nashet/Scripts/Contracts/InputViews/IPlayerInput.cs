@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Nashet.Contracts.InputView
+namespace Assets.Nashet.Scripts.Contracts.InputViews
 {
 	public interface IPlayerInput
 	{

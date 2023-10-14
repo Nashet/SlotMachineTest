@@ -1,4 +1,4 @@
-﻿namespace Nashet.Contracts.Model
+﻿namespace Assets.Nashet.Scripts.Contracts.Models
 {
 	public interface IUpdatable
 	{

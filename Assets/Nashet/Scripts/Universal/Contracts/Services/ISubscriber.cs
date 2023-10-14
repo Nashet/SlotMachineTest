@@ -1,4 +1,4 @@
-﻿namespace Nashet.Contracts.Patterns
+﻿namespace Assets.Nashet.Scripts.Universal.Contracts.Patterns
 {
 	/// <summary>
 	/// use it togther with IPropertyChangeNotifier

@@ -1,16 +1,16 @@
-using Nashet.Contracts.Model;
-using Nashet.Contracts.Patterns;
-using Nashet.Contracts.Services;
-using Nashet.Contracts.ViewModel;
-using Nashet.Data.Configs;
-using Nashet.InputView;
-using Nashet.Models;
-using Nashet.Services;
-using Nashet.Views;
+using Assets.Nashet.Scripts.Contracts.Models;
+using Assets.Nashet.Scripts.Contracts.ViewModels;
+using Assets.Nashet.Scripts.Data.Configs;
+using Assets.Nashet.Scripts.InputViews;
+using Assets.Nashet.Scripts.Models;
+using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
+using Assets.Nashet.Scripts.Universal.Contracts.Services;
+using Assets.Nashet.Scripts.Universal.Services;
+using Assets.Nashet.Scripts.Views;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nashet.ViewModels
+namespace Assets.Nashet.Scripts.ViewModels
 {
 	/// <summary>
 	/// Purpose of that class is to setup nested view models and own model/view

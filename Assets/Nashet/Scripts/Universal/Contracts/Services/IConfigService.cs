@@ -1,4 +1,4 @@
-﻿namespace Nashet.Contracts.Services
+﻿namespace Assets.Nashet.Scripts.Universal.Contracts.Services
 {
 	/// <summary>
 	/// Purpose of this service is to provide access to the configs.

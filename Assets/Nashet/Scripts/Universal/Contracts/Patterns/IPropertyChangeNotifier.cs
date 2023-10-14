@@ -1,4 +1,4 @@
-﻿namespace Nashet.Contracts.Patterns
+﻿namespace Assets.Nashet.Scripts.Universal.Contracts.Patterns
 {
 	public delegate void PropertyChangedEventHandler<T>(T sender, string propertyName);
 

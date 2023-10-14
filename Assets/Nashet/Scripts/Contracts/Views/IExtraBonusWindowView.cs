@@ -1,7 +1,7 @@
-﻿using Nashet.Contracts.Patterns;
-using Nashet.Contracts.ViewModel;
+﻿using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
+using Nashet.Scripts.Contracts.ViewModels;
 
-namespace Nashet.Contracts.View
+namespace Assets.Nashet.Scripts.Contracts.Views
 {
 	internal interface IExtraBonusWindowView : ISubscriber<IExtraBonusWindowViewModel>
 	{

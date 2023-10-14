@@ -1,7 +1,7 @@
-﻿using Nashet.Contracts.Patterns;
-using Nashet.Contracts.ViewModel;
+﻿using Assets.Nashet.Scripts.Contracts.ViewModels;
+using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
 
-namespace Nashet.Contracts.View
+namespace Assets.Nashet.Scripts.Contracts.Views
 {
 	public interface IReelView : ISubscriber<IReelViewModel>, ISubscriber<ISlotMachineViewModel>
 	{

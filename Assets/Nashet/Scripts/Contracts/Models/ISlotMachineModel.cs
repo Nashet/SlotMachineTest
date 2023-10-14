@@ -1,8 +1,8 @@
-﻿using Nashet.Contracts.Patterns;
-using Nashet.Data.Configs;
+﻿using Assets.Nashet.Scripts.Data.Configs;
+using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
 using System.Collections.Generic;
 
-namespace Nashet.Contracts.Model
+namespace Assets.Nashet.Scripts.Contracts.Models
 {
 	public interface ISlotMachineModel : IPropertyChangeNotifier<ISlotMachineModel>
 	{

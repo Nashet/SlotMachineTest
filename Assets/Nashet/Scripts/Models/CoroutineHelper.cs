@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Nashet.Models
+namespace Assets.Nashet.Scripts.Models
 {
 	public class CoroutineHelper : MonoBehaviour
 	{

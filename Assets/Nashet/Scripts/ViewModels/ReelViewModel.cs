@@ -1,12 +1,12 @@
-﻿using Nashet.Contracts.Model;
-using Nashet.Contracts.Patterns;
-using Nashet.Contracts.View;
-using Nashet.Contracts.ViewModel;
-using Nashet.Data.Configs;
-using Nashet.Views;
+﻿using Assets.Nashet.Scripts.Contracts.Models;
+using Assets.Nashet.Scripts.Contracts.ViewModels;
+using Assets.Nashet.Scripts.Contracts.Views;
+using Assets.Nashet.Scripts.Data.Configs;
+using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
+using Assets.Nashet.Scripts.Views;
 using UnityEngine;
 
-namespace Nashet.ViewModels
+namespace Assets.Nashet.Scripts.ViewModels
 {
 	public class ReelViewModel : MonoBehaviour, IReelViewModel
 	{

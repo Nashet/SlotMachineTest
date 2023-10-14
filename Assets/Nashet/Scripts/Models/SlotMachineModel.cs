@@ -1,11 +1,11 @@
-﻿using Nashet.Contracts.Model;
-using Nashet.Contracts.Patterns;
-using Nashet.Contracts.Services;
-using Nashet.Contracts.ViewModel;
-using Nashet.Data.Configs;
+﻿using Assets.Nashet.Scripts.Contracts.Models;
+using Assets.Nashet.Scripts.Contracts.ViewModels;
+using Assets.Nashet.Scripts.Data.Configs;
+using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
+using Assets.Nashet.Scripts.Universal.Contracts.Services;
 using System.Collections.Generic;
 
-namespace Nashet.Models
+namespace Assets.Nashet.Scripts.Models
 {
 	public class SlotMachineModel : ISlotMachineModel
 	{
@@ -61,7 +61,7 @@ namespace Nashet.Models
 				return;
 			isSpinInProgress = true;
 			selectedSymbols.Clear();
-			
+
 			foreach (var item in reelModelsList)
 			{
 				item.StartNewRound();
@@ -78,7 +78,7 @@ namespace Nashet.Models
 			}
 
 			lastSpinScores = IsAllSymbolsSame() ? selectedSymbols[0].prize3InRow : 0;
-			
+
 			isSpinInProgress = false;
 		}
 

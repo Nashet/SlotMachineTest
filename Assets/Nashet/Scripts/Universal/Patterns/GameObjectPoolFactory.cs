@@ -1,7 +1,7 @@
-﻿using Nashet.Contracts.Patterns;
+﻿using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
 using UnityEngine;
 
-namespace Nashet.Patterns
+namespace Assets.Nashet.Scripts.Universal.Universal.Patterns
 {
 	/// <summary>
 	/// That implementation of IGameObjectFactory uses some implementation of object pool pattern

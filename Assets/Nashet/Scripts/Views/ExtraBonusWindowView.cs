@@ -1,10 +1,10 @@
-﻿using Nashet.Contracts.View;
-using Nashet.Contracts.ViewModel;
+﻿using Assets.Nashet.Scripts.Contracts.Views;
+using Nashet.Scripts.Contracts.ViewModels;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Nashet.Views
+namespace Assets.Nashet.Scripts.Views
 {
 	public class ExtraBonusWindowView : MonoBehaviour, IExtraBonusWindowView
 	{

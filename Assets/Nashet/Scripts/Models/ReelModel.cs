@@ -1,10 +1,10 @@
-﻿using Nashet.Contracts.Model;
-using Nashet.Contracts.Patterns;
-using Nashet.Data.Configs;
+﻿using Assets.Nashet.Scripts.Contracts.Models;
+using Assets.Nashet.Scripts.Data.Configs;
+using Assets.Nashet.Scripts.Universal.Contracts.Patterns;
 using System.Collections;
 using UnityEngine;
 
-namespace Nashet.Models
+namespace Assets.Nashet.Scripts.Models
 {
 	public class ReelModel : IReelModel
 	{
