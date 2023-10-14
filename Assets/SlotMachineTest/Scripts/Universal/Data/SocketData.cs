@@ -1,4 +1,4 @@
-﻿namespace Nashet.Common.Data
+﻿namespace Nashet.Data
 {
 	public class SocketData
 	{

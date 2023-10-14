@@ -1,9 +1,11 @@
-﻿using Nashet.SlotMachine.Gameplay.Contracts;
+﻿using Nashet.Contracts;
+using Nashet.Contracts.View;
+using Nashet.Contracts.ViewModel;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Nashet.SlotMachine.Gameplay.Views
+namespace Nashet.Views
 {
 	public class ReelView : MonoBehaviour, IReelView
 	{

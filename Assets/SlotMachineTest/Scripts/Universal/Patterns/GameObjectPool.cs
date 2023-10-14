@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Common.Patterns
+namespace Nashet.Patterns
 {
 	/// <summary>
 	/// Simple implementation of object pool pattern

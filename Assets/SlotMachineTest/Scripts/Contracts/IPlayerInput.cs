@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Nashet.SlotMachine.Gameplay.Contracts
+namespace Nashet.Contracts.InputView
 {
 	public interface IPlayerInput
 	{
-		Action OnSpinButtonClicked { get; set; }
+		Action OnSpinButtonClicked { get;}
 	}
 }

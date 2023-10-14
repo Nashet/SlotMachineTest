@@ -1,15 +1,17 @@
-using Nashet.Common.Services;
+using Nashet.Contracts;
+using Nashet.Contracts.Model;
 using Nashet.Contracts.Patterns;
 using Nashet.Contracts.Services;
-using Nashet.SlotMachine.Data.Configs;
-using Nashet.SlotMachine.Gameplay.Contracts;
-using Nashet.SlotMachine.Gameplay.InputView;
-using Nashet.SlotMachine.Gameplay.Models;
-using Nashet.SlotMachine.Gameplay.Views;
+using Nashet.Contracts.ViewModel;
+using Nashet.Data.Configs;
+using Nashet.InputView;
+using Nashet.Models;
+using Nashet.Services;
+using Nashet.Views;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nashet.SlotMachine.Gameplay.ViewModels
+namespace Nashet.ViewModels
 {
 	/// <summary>
 	/// Purpose of that class is to setup nested view models and own model/view

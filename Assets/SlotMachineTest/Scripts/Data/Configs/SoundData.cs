@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Nashet.SlotMachine.Data.Configs
+namespace Nashet.Data.Configs
 {
 	[CreateAssetMenu(fileName = nameof(SoundData), menuName = "Solution/" + nameof(SoundData))]
 	public class SoundData : ScriptableObject

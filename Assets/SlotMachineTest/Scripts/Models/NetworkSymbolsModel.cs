@@ -1,11 +1,12 @@
-﻿using Nashet.Common.Data;
+﻿using Nashet.Contracts;
+using Nashet.Contracts.Model;
 using Nashet.Contracts.Services;
-using Nashet.SlotMachine.Data.Configs;
-using Nashet.SlotMachine.Gameplay.Contracts;
+using Nashet.Data;
+using Nashet.Data.Configs;
 using Socket.Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Nashet.SlotMachine.Gameplay.Models
+namespace Nashet.Models
 {
 	public class NetworkSymbolsModel : INetworkSymbolsModel
 	{

@@ -1,10 +1,10 @@
-﻿using Nashet.Common.Data;
-using Nashet.Contracts.Services;
+﻿using Nashet.Contracts.Services;
+using Nashet.Data;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nashet.Common.Services
+namespace Nashet.Services
 {
 	/// <summary>
 	/// That implementation of IConfigService is used to get configs from ScriptableObjects.

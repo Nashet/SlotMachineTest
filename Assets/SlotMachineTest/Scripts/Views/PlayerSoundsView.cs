@@ -1,9 +1,11 @@
-﻿using Nashet.SlotMachine.Data.Configs;
-using Nashet.SlotMachine.Gameplay.Contracts;
+﻿using Nashet.Contracts;
+using Nashet.Contracts.View;
+using Nashet.Contracts.ViewModel;
+using Nashet.Data.Configs;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nashet.SlotMachine.Gameplay.Views
+namespace Nashet.Views
 {
 	/// <summary>
 	/// The only purpose of that class is to play sounds

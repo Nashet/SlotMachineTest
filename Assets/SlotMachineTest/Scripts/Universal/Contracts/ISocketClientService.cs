@@ -1,4 +1,4 @@
-﻿using Nashet.Common.Data;
+﻿using Nashet.Data;
 using System;
 
 namespace Nashet.Contracts.Services

@@ -1,11 +1,13 @@
-﻿using Nashet.Contracts.Patterns;
+﻿using Nashet.Contracts;
+using Nashet.Contracts.Model;
+using Nashet.Contracts.Patterns;
 using Nashet.Contracts.Services;
-using Nashet.SlotMachine.Data.Configs;
-using Nashet.SlotMachine.Gameplay.Contracts;
+using Nashet.Contracts.ViewModel;
+using Nashet.Data.Configs;
 using Socket.WebSocket4Net.System.Linq;
 using System.Collections.Generic;
 
-namespace Nashet.SlotMachine.Gameplay.Models
+namespace Nashet.Models
 {
 	public class SlotMachineModel : ISlotMachineModel
 	{

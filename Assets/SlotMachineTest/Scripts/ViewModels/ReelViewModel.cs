@@ -1,10 +1,13 @@
-﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Data.Configs;
-using Nashet.SlotMachine.Gameplay.Contracts;
-using Nashet.SlotMachine.Gameplay.Views;
+﻿using Nashet.Contracts;
+using Nashet.Contracts.Model;
+using Nashet.Contracts.Patterns;
+using Nashet.Contracts.View;
+using Nashet.Contracts.ViewModel;
+using Nashet.Data.Configs;
+using Nashet.Views;
 using UnityEngine;
 
-namespace Nashet.SlotMachine.Gameplay.ViewModels
+namespace Nashet.ViewModels
 {
 	public class ReelViewModel : MonoBehaviour, IReelViewModel
 	{

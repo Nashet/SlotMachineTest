@@ -1,8 +1,9 @@
-using Nashet.SlotMachine.Data.Configs;
-using Nashet.SlotMachine.Gameplay.Contracts;
+using Nashet.Contracts;
+using Nashet.Contracts.View;
+using Nashet.Data.Configs;
 using UnityEngine;
 
-namespace Nashet.SlotMachine.Gameplay.Views
+namespace Nashet.Views
 {
 	/// <summary>
 	/// The purpose of this class is to handle visuals of symbols

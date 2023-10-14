@@ -1,7 +1,7 @@
 ﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Data.Configs;
+using Nashet.Data.Configs;
 
-namespace Nashet.SlotMachine.Gameplay.Contracts
+namespace Nashet.Contracts.Model
 {
 	public interface IReelModel : IPropertyChangeNotifier<IReelModel>
 	{

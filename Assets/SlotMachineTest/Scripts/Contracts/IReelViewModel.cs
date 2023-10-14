@@ -1,7 +1,8 @@
-﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Data.Configs;
+﻿using Nashet.Contracts.Model;
+using Nashet.Contracts.Patterns;
+using Nashet.Data.Configs;
 
-namespace Nashet.SlotMachine.Gameplay.Contracts
+namespace Nashet.Contracts.ViewModel
 {
 	public interface IReelViewModel : IPropertyChangeNotifier<IReelViewModel>, ISubscriber<IReelModel>
 	{

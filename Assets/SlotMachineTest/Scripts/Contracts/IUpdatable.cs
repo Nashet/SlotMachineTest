@@ -1,4 +1,4 @@
-﻿namespace Nashet.SlotMachine.Gameplay.Contracts
+﻿namespace Nashet.Contracts.Model
 {
 	public interface IUpdatable
 	{

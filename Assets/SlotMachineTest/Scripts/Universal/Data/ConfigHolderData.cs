@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nashet.Common.Data
+namespace Nashet.Data
 {
 	/// <summary>
 	/// The only purpose of this class is to hold all other configs

@@ -1,9 +1,9 @@
 ﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Data.Configs;
+using Nashet.Data.Configs;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nashet.SlotMachine.Gameplay.Models
+namespace Nashet.Models
 {
 	public class FakeRandomStrategy : IFakeRandomStrategy<SymbolData>
 	{

@@ -1,17 +1,16 @@
-﻿using Nashet.SlotMachine.Gameplay.Contracts;
+﻿using Nashet.Contracts;
+using Nashet.Contracts.InputView;
 using System;
 using UnityEngine;
 
-namespace Nashet.SlotMachine.Gameplay.InputView
+namespace Nashet.InputView
 {
 	/// <summary>
 	/// The only goal is to handle player input
 	/// </summary>
 	public class PlayerInput : MonoBehaviour, IPlayerInput
 	{
-		public Action OnSpinButtonClicked;
-
-		Action IPlayerInput.OnSpinButtonClicked { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+		public Action OnSpinButtonClicked { get; set; }
 
 		public void RiseOnPropertyChanged()
 		{

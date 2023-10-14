@@ -1,9 +1,10 @@
-﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Data.Configs;
-using Nashet.SlotMachine.Gameplay.Contracts;
+﻿using Nashet.Contracts;
+using Nashet.Contracts.Model;
+using Nashet.Contracts.Patterns;
+using Nashet.Data.Configs;
 using System.Collections.Generic;
 
-namespace Nashet.SlotMachine.Gameplay.Models
+namespace Nashet.Models
 {
 	/// <summary>
 	/// Gives collection of pseudo random symbols

@@ -1,6 +1,6 @@
-﻿using Nashet.SlotMachine.Data.Configs;
+﻿using Nashet.Data.Configs;
 
-namespace Nashet.SlotMachine.Gameplay.Contracts
+namespace Nashet.Contracts.View
 {
 	/// <summary>
 	/// Represents visualization of a symbol in slot machine

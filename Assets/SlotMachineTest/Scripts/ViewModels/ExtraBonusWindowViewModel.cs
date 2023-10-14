@@ -1,8 +1,11 @@
-﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Gameplay.Contracts;
+﻿using Nashet.Contracts;
+using Nashet.Contracts.Model;
+using Nashet.Contracts.Patterns;
+using Nashet.Contracts.View;
+using Nashet.Contracts.ViewModel;
 using UnityEngine;
 
-namespace Nashet.SlotMachine.Gameplay.ViewModels
+namespace Nashet.ViewModels
 {
 	public class ExtraBonusWindowViewModel : MonoBehaviour, IExtraBonusWindowViewModel
 	{

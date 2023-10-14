@@ -1,10 +1,10 @@
-﻿using Nashet.Common.Data;
-using Nashet.Contracts.Services;
+﻿using Nashet.Contracts.Services;
+using Nashet.Data;
 using Socket.Newtonsoft.Json;
 using Socket.Quobject.SocketIoClientDotNet.Client;
 using System.Collections.Generic;
 
-namespace Nashet.Common.Services
+namespace Nashet.Services
 {
 	public class SocketIOService : ISocketClientService
 	{

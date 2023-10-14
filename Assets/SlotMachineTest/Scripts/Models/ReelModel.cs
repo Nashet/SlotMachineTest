@@ -1,10 +1,11 @@
-﻿using Nashet.Contracts.Patterns;
-using Nashet.SlotMachine.Data.Configs;
-using Nashet.SlotMachine.Gameplay.Contracts;
+﻿using Nashet.Contracts;
+using Nashet.Contracts.Model;
+using Nashet.Contracts.Patterns;
+using Nashet.Data.Configs;
 using System.Collections;
 using UnityEngine;
 
-namespace Nashet.SlotMachine.Gameplay.Models
+namespace Nashet.Models
 {
 	public class ReelModel : IReelModel
 	{

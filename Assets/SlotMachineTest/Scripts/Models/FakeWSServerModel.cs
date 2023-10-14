@@ -1,11 +1,11 @@
-﻿using Nashet.Common.Data;
-using Nashet.Contracts.Services;
-using Nashet.SlotMachine.Gameplay.ViewModels;
+﻿using Nashet.Contracts.Services;
+using Nashet.Data;
+using Nashet.ViewModels;
 using Socket.Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nashet.SlotMachine.Gameplay.Models
+namespace Nashet.Models
 {
 	public class FakeWSServerModel : MonoBehaviour
 	{

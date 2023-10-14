@@ -1,6 +1,7 @@
 ﻿using Nashet.Contracts.Patterns;
+using Nashet.Contracts.ViewModel;
 
-namespace Nashet.SlotMachine.Gameplay.Contracts
+namespace Nashet.Contracts.View
 {
 	internal interface IExtraBonusWindowView : ISubscriber<IExtraBonusWindowViewModel>
 	{
