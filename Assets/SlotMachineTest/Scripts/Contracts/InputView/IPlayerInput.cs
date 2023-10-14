@@ -4,6 +4,6 @@ namespace Nashet.Contracts.InputView
 {
 	public interface IPlayerInput
 	{
-		Action OnSpinButtonClicked { get;}
+		Action OnSpinButtonClicked { get; }
 	}
 }
