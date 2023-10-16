@@ -12,10 +12,11 @@ using Assets.SlotMachineNetTest.Scripts.Views;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-namespace Zenject.Asteroids
+namespace Assets.SlotMachineNetTest.Scripts.Installers
 {
-	public class MyGameInstaller : MonoInstaller
+	public class ZenjectInstaller : MonoInstaller
 	{
 		[SerializeField] private List<ReelViewModel> reelVMlList = new List<ReelViewModel>();
 		[SerializeField] private string configHolderName;

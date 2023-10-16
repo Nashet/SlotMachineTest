@@ -16,8 +16,9 @@ MonoBehaviour:
   randomAmountOfDecorateSymbolsPerSpin: 3
   oneSymbolSpinTime: 0.2
   availableSymbols:
+  - {fileID: 11400000, guid: 377b001a55730574aadd5097ad752e0d, type: 2}
   - {fileID: 11400000, guid: 4cdd7c27c5f7dc54998a357e06a4590c, type: 2}
-  - {fileID: 11400000, guid: 4cdd7c27c5f7dc54998a357e06a4590c, type: 2}
+  - {fileID: 11400000, guid: 22939b1772bf80e4db04cab861f38240, type: 2}
   extraBonusSymbol:
   - {fileID: 11400000, guid: 4cdd7c27c5f7dc54998a357e06a4590c, type: 2}
   extraBonusMultiplier: 5

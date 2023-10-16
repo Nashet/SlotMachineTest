@@ -4,10 +4,7 @@ using Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels;
 using Assets.SlotMachineNetTest.Scripts.Contracts.Views;
 using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
 using Assets.SlotMachineNetTest.Scripts.Universal.ViewModels;
-using System;
 using System.Collections.Generic;
-using UnityEngine;
-using Zenject;
 
 namespace Assets.SlotMachineNetTest.Scripts.ViewModels
 {
@@ -26,7 +23,7 @@ namespace Assets.SlotMachineNetTest.Scripts.ViewModels
 
 		private ISlotMachineModel slotMachineModel;
 		private IPlayerSoundsView playerSoundsView;
-		
+
 		public SlotMachineViewModel(IPlayerSoundsView playerSoundsView, ISlotMachineModel slotMachineModel, IPlayerInput playerInput, IList<IReelViewModel> reelVMlList)
 		{
 			this.reelVMlList = reelVMlList;

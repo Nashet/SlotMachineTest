@@ -22,7 +22,4 @@ namespace Assets.SlotMachineNetTest.Scripts.Data.Configs
 	}
 }
 
-//todo add zenject 
 //todo add rective property
-//todo add assemblies
-//todo check non event communictaiein
