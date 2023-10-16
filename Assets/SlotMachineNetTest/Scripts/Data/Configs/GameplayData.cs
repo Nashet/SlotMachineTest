@@ -17,9 +17,12 @@ namespace Assets.SlotMachineNetTest.Scripts.Data.Configs
 		public List<SymbolData> extraBonusSymbol;
 		public float extraBonusMultiplier;
 		public string WSURL = "http://localhost:3000";
+		public float openingExtraPrizeWindowDelay = 1f;
+		public string prizeWindowTextTemplate = "Norm, mo money for me {0}";
 	}
 }
 
+//todo add zenject 
 //todo add rective property
 //todo add assemblies
 //todo check non event communictaiein

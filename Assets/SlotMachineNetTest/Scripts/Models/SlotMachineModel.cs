@@ -1,17 +1,14 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Contracts.Models;
-using Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels;
 using Assets.SlotMachineNetTest.Scripts.Data.Configs;
 using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services;
+using Assets.SlotMachineNetTest.Scripts.Universal.Models;
 using System.Collections.Generic;
 
 namespace Assets.SlotMachineNetTest.Scripts.Models
 {
-	public class SlotMachineModel : ISlotMachineModel
+	public class SlotMachineModel : Model, ISlotMachineModel
 	{
 		public event PropertyChangedEventHandler<ISlotMachineModel> OnPropertyChanged;
-
-		private GameplayData gameplayConfig;
 
 		public IList<IReelModel> reelModelsList { get; protected set; }
 
@@ -21,6 +18,7 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 		private bool isSpinInProgress;
 		private float _extraBonusSum;
 		private int _lastSpinScores;
+		private GameplayData gameplayData;
 
 		public int lastSpinScores
 		{
@@ -30,6 +28,7 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 				RiseOnPropertyChanged(nameof(lastSpinScores));
 			}
 		}
+
 		public float extraBonusSum
 		{
 			get => _extraBonusSum;
@@ -40,19 +39,10 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 			}
 		}
 
-		public SlotMachineModel(GameplayData gameplayConfig, IEnumerable<IReelViewModel> reelVMList, ISocketClientService socketClient)
+		public SlotMachineModel(GameplayData gameplayConfig, List<IReelModel> nestedObjects)
 		{
-			this.gameplayConfig = gameplayConfig;
-			reelModelsList = new List<IReelModel>();
-
-			var id = 0;
-			foreach (var item in reelVMList)
-			{
-				var randomSymbolStrategy = new FakeRandomStrategy(gameplayConfig);
-
-				reelModelsList.Add(new ReelModel(randomSymbolStrategy, gameplayConfig));
-				id++;
-			}
+			gameplayData = gameplayConfig;
+			reelModelsList = nestedObjects;
 		}
 
 		public void StartNewRound()
@@ -78,6 +68,12 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 			}
 
 			lastSpinScores = IsAllSymbolsSame() ? selectedSymbols[0].prize3InRow : 0;
+
+
+			if (lastSpinScores > 0 && gameplayData.extraBonusSymbol.Contains(selectedSymbols[0]))
+			{
+				extraBonusSum = gameplayData.extraBonusMultiplier * selectedSymbols[0].prize3InRow;
+			}
 
 			isSpinInProgress = false;
 		}

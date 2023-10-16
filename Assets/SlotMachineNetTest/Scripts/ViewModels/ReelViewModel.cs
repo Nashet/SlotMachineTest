@@ -6,6 +6,7 @@ using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
 using Assets.SlotMachineNetTest.Scripts.Universal.ViewModels;
 using Assets.SlotMachineNetTest.Scripts.Views;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.SlotMachineNetTest.Scripts.ViewModels
 {
@@ -21,15 +22,21 @@ namespace Assets.SlotMachineNetTest.Scripts.ViewModels
 		private IReelModel reelModel;
 		private ISlotMachineViewModel slotMachineViewModel;
 
-		internal void Initialize(GameplayData gameplayConfig, IPlayerSoundsView playerSoundsView, IReelModel reelModel, ISlotMachineViewModel slotMachineViewModel)
+		[Inject]
+		private void Construct(IPlayerSoundsView playerSoundsView, ISlotMachineViewModel slotMachineViewModel)
 		{
 			this.slotMachineViewModel = slotMachineViewModel;
 			this.playerSoundsView = playerSoundsView;
-			this.reelModel = reelModel;
-			this.SubscribeTo(this.reelModel);
 			reelView.SubscribeTo(this);
 			reelView.SubscribeTo(slotMachineViewModel);
 			playerSoundsView.SubscribeTo(this);
+		}
+
+		//keep it for now
+		public void InitializeOld(IReelModel reelModel)
+		{
+			this.reelModel = reelModel;
+			this.SubscribeTo(this.reelModel);
 		}
 
 		private void OnDestroy()

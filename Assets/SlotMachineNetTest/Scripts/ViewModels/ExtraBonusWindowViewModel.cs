@@ -1,33 +1,23 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Contracts.Models;
-using Assets.SlotMachineNetTest.Scripts.Contracts.Views;
+using Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels;
 using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
 using Assets.SlotMachineNetTest.Scripts.Universal.ViewModels;
-using Nashet.Scripts.Contracts.ViewModels;
-using UnityEngine;
+using System;
 
 namespace Assets.SlotMachineNetTest.Scripts.ViewModels
 {
-	public class ExtraBonusWindowViewModel : MonoViewModel, IExtraBonusWindowViewModel
+	public class ExtraBonusWindowViewModel : ViewModel, IExtraBonusWindowViewModel, IDisposable
 	{
 		public event PropertyChangedEventHandler<IExtraBonusWindowViewModel> OnPropertyChanged;
 
 		public float extraBonusSum => slotMachineModel.extraBonusSum;
 
 		private ISlotMachineModel slotMachineModel;
-		private IExtraBonusWindowView extraBonusWindowView;
 
-		public void Initialize(ISlotMachineModel slotMachineModel)
+		public ExtraBonusWindowViewModel(ISlotMachineModel slotMachineModel)
 		{
-			this.extraBonusWindowView = GetComponent<IExtraBonusWindowView>();
 			this.slotMachineModel = slotMachineModel;
 			SubscribeTo(slotMachineModel);
-			extraBonusWindowView.SubscribeTo(this);
-		}
-
-		private void OnDestroy()
-		{
-			extraBonusWindowView.UnSubscribeFrom(this);
-			this.UnSubscribeFrom(slotMachineModel);
 		}
 
 		public void PropertyChangedHandler(ISlotMachineModel sender, string propertyName)
@@ -54,6 +44,11 @@ namespace Assets.SlotMachineNetTest.Scripts.ViewModels
 		public void UnSubscribeFrom(ISlotMachineModel sender)
 		{
 			sender.OnPropertyChanged -= PropertyChangedHandler;
+		}
+
+		public void Dispose()
+		{
+			this.UnSubscribeFrom(slotMachineModel);
 		}
 	}
 }

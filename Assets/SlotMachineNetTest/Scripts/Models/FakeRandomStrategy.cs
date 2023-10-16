@@ -16,7 +16,7 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 		private int expectedSequenceSize;
 		private IEnumerator<SymbolData> symbolEnumerator;
 
-		public FakeRandomStrategy(GameplayData gameplayConfig)
+		private FakeRandomStrategy(GameplayData gameplayConfig)
 		{
 			this.gameplayConfig = gameplayConfig;
 			symbolEnumerator = GetSymbols().GetEnumerator();

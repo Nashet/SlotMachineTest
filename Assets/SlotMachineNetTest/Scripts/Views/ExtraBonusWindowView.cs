@@ -1,18 +1,35 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Contracts.Views;
+﻿using Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels;
+using Assets.SlotMachineNetTest.Scripts.Contracts.Views;
+using Assets.SlotMachineNetTest.Scripts.Data.Configs;
 using Assets.SlotMachineNetTest.Scripts.Universal.Views;
-using Nashet.Scripts.Contracts.ViewModels;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Assets.SlotMachineNetTest.Scripts.Views
 {
 	public class ExtraBonusWindowView : MonoView, IExtraBonusWindowView
 	{
 		[SerializeField] private Text prizeText;
-		[SerializeField] private string prizeTextTemplate;
-		[SerializeField] private float openingDelay;
+		private string prizeTextTemplate => gameplayData.prizeWindowTextTemplate;
+		private float openingDelay => gameplayData.openingExtraPrizeWindowDelay;
 		[SerializeField] private CanvasGroup canvasGroup;
+		private IExtraBonusWindowViewModel extraBonusWindowViewModel;
+		private GameplayData gameplayData;
+
+		[Inject]
+		private void Construct(GameplayData gameplayData, IExtraBonusWindowViewModel extraBonusWindowViewModel)
+		{
+			this.extraBonusWindowViewModel = extraBonusWindowViewModel;
+			this.gameplayData = gameplayData;
+			SubscribeTo(extraBonusWindowViewModel);
+		}
+
+		private void OnDestroy()
+		{
+			UnSubscribeFrom(extraBonusWindowViewModel);
+		}
 
 		public void PropertyChangedHandler(IExtraBonusWindowViewModel sender, string propertyName)
 		{

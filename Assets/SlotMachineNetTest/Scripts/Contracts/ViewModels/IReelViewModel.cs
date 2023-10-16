@@ -8,5 +8,6 @@ namespace Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels
 	{
 		SymbolData decorativeSymbol { get; }
 		SymbolData selectedSymbol { get; }
+		void InitializeOld(IReelModel reelModel);
 	}
 }

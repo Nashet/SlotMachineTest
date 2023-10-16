@@ -15,6 +15,10 @@ namespace Assets.SlotMachineNetTest.Scripts.Universal.Services
 
 		public SOConfigService(string configHolderName)
 		{
+			if (string.IsNullOrEmpty(configHolderName))
+			{
+				throw new ArgumentNullException(nameof(configHolderName));
+			}
 			var configHolder = Resources.Load<ConfigHolderData>(configHolderName);
 
 			foreach (var item in configHolder.AllConfigs)

@@ -1,62 +1,57 @@
+using Assets.SlotMachineNetTest.Scripts.Contracts.InputViews;
 using Assets.SlotMachineNetTest.Scripts.Contracts.Models;
 using Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels;
-using Assets.SlotMachineNetTest.Scripts.Data.Configs;
-using Assets.SlotMachineNetTest.Scripts.InputViews;
-using Assets.SlotMachineNetTest.Scripts.Models;
+using Assets.SlotMachineNetTest.Scripts.Contracts.Views;
 using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services;
-using Assets.SlotMachineNetTest.Scripts.Universal.Services;
 using Assets.SlotMachineNetTest.Scripts.Universal.ViewModels;
-using Assets.SlotMachineNetTest.Scripts.Views;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.SlotMachineNetTest.Scripts.ViewModels
 {
 	/// <summary>
 	/// Purpose of that class is to setup nested view models and own model/view
 	/// </summary>
-	public class SlotMachineViewModel : MonoViewModel, ISlotMachineViewModel
+	public class SlotMachineViewModel : ViewModel, ISlotMachineViewModel
 	{
 		public event PropertyChangedEventHandler<ISlotMachineViewModel> OnPropertyChanged;
 
 		public int lastSpinScores => slotMachineModel.lastSpinScores;
 		public float extraBonusSum => slotMachineModel.extraBonusSum;
 
-		[SerializeField] private PlayerInput playerInput;
-		[SerializeField] private PlayerSoundsView playerSoundsView;
-		[SerializeField] private ExtraBonusWindowViewModel extraBonusWindowViewModel;
-		[SerializeField] private List<ReelViewModel> reelVMlList = new List<ReelViewModel>();
-		[SerializeField] private string configHolderName;
+		private IList<IReelViewModel> reelVMlList;
+		private IPlayerInput playerInput;
+
 		private ISlotMachineModel slotMachineModel;
-		internal ISocketClientService socketService;
-
-		private void Awake()
+		private IPlayerSoundsView playerSoundsView;
+		
+		public SlotMachineViewModel(IPlayerSoundsView playerSoundsView, ISlotMachineModel slotMachineModel, IPlayerInput playerInput, IList<IReelViewModel> reelVMlList)
 		{
-			var configService = new SOConfigService(configHolderName);
-			Initialize(configService.GetConfig<GameplayData>());
-		}
-
-		public void Initialize(GameplayData gameplayConfig)
-		{
-			slotMachineModel = new SlotMachineModel(gameplayConfig, reelVMlList, socketService);
+			this.reelVMlList = reelVMlList;
+			this.playerInput = playerInput;
+			this.slotMachineModel = slotMachineModel;
+			this.playerSoundsView = playerSoundsView;
 			playerInput.OnSpinButtonClicked += OnSpinButtonClickedHandler;
 			this.SubscribeTo(slotMachineModel);
 			playerSoundsView.SubscribeTo(this);
-			extraBonusWindowViewModel.Initialize(slotMachineModel);
 
 			for (int i = 0; i < reelVMlList.Count; i++)
 			{
 				var reelVM = reelVMlList[i];
 				this.SubscribeTo(reelVM);
-				reelVM.Initialize(gameplayConfig, playerSoundsView, slotMachineModel.reelModelsList[i], this);
+				//keep it for now
+				reelVM.InitializeOld(slotMachineModel.reelModelsList[i]);
 			}
 		}
 
 		private void OnDestroy()
 		{
-			playerInput.OnSpinButtonClicked -= OnSpinButtonClickedHandler;
-			playerSoundsView.UnSubscribeFrom(this);
+			if (playerInput != null)
+				playerInput.OnSpinButtonClicked -= OnSpinButtonClickedHandler;
+			if (playerSoundsView != null)
+				playerSoundsView.UnSubscribeFrom(this);
 
 			this.UnSubscribeFrom(slotMachineModel);
 			for (int i = 0; i < reelVMlList.Count; i++)
@@ -118,6 +113,11 @@ namespace Assets.SlotMachineNetTest.Scripts.ViewModels
 		public void UnSubscribeFrom(ISlotMachineModel sender)
 		{
 			sender.OnPropertyChanged -= PropertyChangedHandler;
+		}
+
+		public void Dispose()
+		{
+			OnDestroy();
 		}
 	}
 }
