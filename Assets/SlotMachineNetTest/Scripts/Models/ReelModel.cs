@@ -11,30 +11,16 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 	{
 		public event PropertyChangedEventHandler<IReelModel> OnPropertyChanged;
 
-		public SymbolData selectedSymbol
-		{
-			get => _selectedSymbol;
-			private set
-			{
-				_selectedSymbol = value;
-				RiseOnPropertyChanged(nameof(selectedSymbol));
-			}
-		}
-		public SymbolData decorativeSymbol
-		{
-			get => _decorativeSymbol;
-			private set
-			{
-				_decorativeSymbol = value;
-				RiseOnPropertyChanged(nameof(decorativeSymbol));
-			}
-		}
+		public ReactiveProperty<SymbolData> _selectedSymbol = new ReactiveProperty<SymbolData>();
+		public SymbolData selectedSymbol => _selectedSymbol.Value;
+
+		public ReactiveProperty<SymbolData> _decorativeSymbol = new ReactiveProperty<SymbolData>();
+		public SymbolData decorativeSymbol => _decorativeSymbol.Value;
+
 
 		private GameplayData gameplayConfig;
 		private IFakeRandomStrategy<SymbolData> randomStrategy;
 		private CoroutineHelper coroutineHelper;
-		private SymbolData _selectedSymbol;
-		private SymbolData _decorativeSymbol;
 
 		public ReelModel(IFakeRandomStrategy<SymbolData> randomStrategy, GameplayData gameplayConfig)
 		{
@@ -42,6 +28,9 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 			this.randomStrategy = randomStrategy;
 			var gameObject = new GameObject("CoroutineHolder");
 			coroutineHelper = gameObject.AddComponent<CoroutineHelper>();
+
+			_selectedSymbol.Subscribe(x => RiseOnPropertyChanged(nameof(selectedSymbol)));
+			_decorativeSymbol.Subscribe(x => RiseOnPropertyChanged(nameof(decorativeSymbol)));
 		}
 
 		public void StartNewRound()
@@ -63,13 +52,13 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 				var nextSymbol = randomStrategy.Get();
 				if (nextSymbol != null) //null means that sequence isnt ready yet
 				{
-					decorativeSymbol = nextSymbol;
+					_decorativeSymbol.Value = nextSymbol;
 				}
 
 				yield return new WaitForSeconds(gameplayConfig.oneSymbolSpinTime);
 			}
 
-			selectedSymbol = decorativeSymbol;
+			_selectedSymbol.Value = decorativeSymbol;
 		}
 
 		public void RiseOnPropertyChanged(string propertyName)
