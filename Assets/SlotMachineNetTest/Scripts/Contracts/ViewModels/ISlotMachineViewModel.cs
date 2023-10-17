@@ -4,7 +4,7 @@ using System;
 
 namespace Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels
 {
-	public interface ISlotMachineViewModel : IPropertyChangeNotifier<ISlotMachineViewModel>, ISubscriber<IReelViewModel>, ISubscriber<ISlotMachineModel>, IDisposable
+	public interface ISlotMachineViewModel : IPropertyChangeNotifier<ISlotMachineViewModel>, IPropertyChangeSubscriber<IReelViewModel>, IPropertyChangeSubscriber<ISlotMachineModel>, IDisposable
 	{
 		int lastSpinScores { get; }
 		float extraBonusSum { get; }

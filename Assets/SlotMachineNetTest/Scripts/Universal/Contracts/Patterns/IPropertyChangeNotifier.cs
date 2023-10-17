@@ -4,6 +4,7 @@
 
 	/// <summary>
 	/// Pupose of that interface is to give common base for view models or other notifiers
+	/// use it with IPropertyChangeSubscriber
 	/// </summary>
 	public interface IPropertyChangeNotifier<T>
 	{

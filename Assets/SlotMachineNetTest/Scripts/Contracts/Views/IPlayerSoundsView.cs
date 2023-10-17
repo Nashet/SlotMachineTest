@@ -3,7 +3,7 @@ using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
 
 namespace Assets.SlotMachineNetTest.Scripts.Contracts.Views
 {
-	public interface IPlayerSoundsView : ISubscriber<ISlotMachineViewModel>, ISubscriber<IReelViewModel>
+	public interface IPlayerSoundsView : IPropertyChangeSubscriber<ISlotMachineViewModel>, IPropertyChangeSubscriber<IReelViewModel>
 	{
 	}
 }

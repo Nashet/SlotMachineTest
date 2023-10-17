@@ -4,7 +4,7 @@
 	/// use it togther with IPropertyChangeNotifier
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
-	public interface ISubscriber<T>
+	public interface IPropertyChangeSubscriber<T>
 	{
 		void PropertyChangedHandler(T sender, string propertyName);
 		void SubscribeTo(T sender);

@@ -3,7 +3,7 @@ using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
 
 namespace Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels
 {
-	public interface IExtraBonusWindowViewModel : ISubscriber<ISlotMachineModel>, IPropertyChangeNotifier<IExtraBonusWindowViewModel>
+	public interface IExtraBonusWindowViewModel : IPropertyChangeSubscriber<ISlotMachineModel>, IPropertyChangeNotifier<IExtraBonusWindowViewModel>
 	{
 		float extraBonusSum { get; }
 	}

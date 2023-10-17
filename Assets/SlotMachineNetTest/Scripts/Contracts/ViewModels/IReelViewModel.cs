@@ -4,7 +4,7 @@ using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
 
 namespace Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels
 {
-	public interface IReelViewModel : IPropertyChangeNotifier<IReelViewModel>, ISubscriber<IReelModel>
+	public interface IReelViewModel : IPropertyChangeNotifier<IReelViewModel>, IPropertyChangeSubscriber<IReelModel>
 	{
 		SymbolData decorativeSymbol { get; }
 		SymbolData selectedSymbol { get; }
