@@ -11,10 +11,10 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 	{
 		public event PropertyChangedEventHandler<IReelModel> OnPropertyChanged;
 
-		public ReactiveProperty<SymbolData> _selectedSymbol = new ReactiveProperty<SymbolData>();
+		private ReactiveProperty<SymbolData> _selectedSymbol = new();
 		public SymbolData selectedSymbol => _selectedSymbol.Value;
 
-		public ReactiveProperty<SymbolData> _decorativeSymbol = new ReactiveProperty<SymbolData>();
+		private ReactiveProperty<SymbolData> _decorativeSymbol = new();
 		public SymbolData decorativeSymbol => _decorativeSymbol.Value;
 
 

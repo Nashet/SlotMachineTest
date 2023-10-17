@@ -21,5 +21,3 @@ namespace Assets.SlotMachineNetTest.Scripts.Data.Configs
 		public string prizeWindowTextTemplate = "Norm, mo money for me {0}";
 	}
 }
-
-//todo add rective property

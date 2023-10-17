@@ -1,7 +1,6 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace Assets.SlotMachineNetTest.Scripts.Universal.Universal.Patterns
 {
@@ -10,7 +9,7 @@ namespace Assets.SlotMachineNetTest.Scripts.Universal.Universal.Patterns
 	/// Comparing to IPropertyChangeNotifier:
 	/// requires much less writing, but it requires class cast.
 	/// And since its not attached to particular class, there is a chance of wrong type subscription 
-	/// !!It doesnt say which property was changed
+	/// !!It Doesnt say which property was changed!!
 	/// </summary>
 	public abstract class ObservablePattern : IObservable
 	{
