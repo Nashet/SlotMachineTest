@@ -2,8 +2,8 @@ using Assets.SlotMachineNetTest.Scripts.Contracts.InputViews;
 using Assets.SlotMachineNetTest.Scripts.Contracts.Models;
 using Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels;
 using Assets.SlotMachineNetTest.Scripts.Contracts.Views;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
-using Assets.SlotMachineNetTest.Scripts.Universal.ViewModels;
+using Assets.CommonNashet.Contracts.Patterns;
+using Assets.CommonNashet.ViewModels;
 using System.Collections.Generic;
 
 namespace Assets.SlotMachineNetTest.Scripts.ViewModels

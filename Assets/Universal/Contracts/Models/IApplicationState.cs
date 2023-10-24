@@ -1,6 +1,6 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
+﻿using Assets.CommonNashet.Contracts.Patterns;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Models
+namespace Assets.CommonNashet.Contracts.Models
 {
 	public interface IApplicationState : IState, IUpdatable
 	{

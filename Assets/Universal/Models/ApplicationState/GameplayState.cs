@@ -1,4 +1,4 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Models;
+﻿using Assets.CommonNashet.Contracts.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

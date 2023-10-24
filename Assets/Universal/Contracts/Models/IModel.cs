@@ -1,4 +1,4 @@
-﻿namespace Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Models
+﻿namespace Assets.CommonNashet.Contracts.Models
 {
 	public interface IModel
 	{

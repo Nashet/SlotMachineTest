@@ -1,8 +1,8 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
+﻿using Assets.CommonNashet.Contracts.Patterns;
 using System;
 using System.Collections.Generic;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Universal.Patterns
+namespace Assets.CommonNashet.Universal.Patterns
 {
 	/// <summary>
 	/// That is another implementation of observable pattern

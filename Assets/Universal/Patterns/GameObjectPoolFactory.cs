@@ -1,7 +1,7 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
+﻿using Assets.CommonNashet.Contracts.Patterns;
 using UnityEngine;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Universal.Patterns
+namespace Assets.CommonNashet.Universal.Patterns
 {
 	/// <summary>
 	/// That implementation of IGameObjectFactory uses some implementation of object pool pattern

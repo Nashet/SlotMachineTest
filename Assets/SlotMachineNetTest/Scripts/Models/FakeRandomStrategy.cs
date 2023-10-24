@@ -1,6 +1,6 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Data.Configs;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services;
+using Assets.CommonNashet.Contracts.Patterns;
+using Assets.CommonNashet.Contracts.Services;
 using System.Collections.Generic;
 using UnityEngine;
 

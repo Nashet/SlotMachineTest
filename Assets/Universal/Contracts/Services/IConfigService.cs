@@ -1,4 +1,4 @@
-﻿namespace Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services
+﻿namespace Assets.CommonNashet.Contracts.Services
 {
 	/// <summary>
 	/// Purpose of this service is to provide access to the configs.

@@ -1,5 +1,5 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Contracts.Models;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
+using Assets.CommonNashet.Contracts.Patterns;
 
 namespace Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels
 {

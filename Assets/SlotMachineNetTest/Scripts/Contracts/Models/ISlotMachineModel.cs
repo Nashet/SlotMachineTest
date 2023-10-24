@@ -1,5 +1,5 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Data.Configs;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
+using Assets.CommonNashet.Contracts.Patterns;
 using System.Collections.Generic;
 
 namespace Assets.SlotMachineNetTest.Scripts.Contracts.Models

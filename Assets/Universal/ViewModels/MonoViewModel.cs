@@ -1,7 +1,7 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.ViewModels;
+﻿using Assets.CommonNashet.Contracts.ViewModels;
 using UnityEngine;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.ViewModels
+namespace Assets.CommonNashet.ViewModels
 {
 	public abstract class MonoViewModel : MonoBehaviour, IViewModel
 	{ }

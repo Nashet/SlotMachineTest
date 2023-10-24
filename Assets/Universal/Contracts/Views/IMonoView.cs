@@ -1,4 +1,4 @@
-﻿namespace Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Views
+﻿namespace Assets.CommonNashet.Contracts.Views
 {
 	public interface IMonoView { }
 }

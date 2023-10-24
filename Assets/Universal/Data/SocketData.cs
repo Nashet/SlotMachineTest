@@ -1,4 +1,4 @@
-﻿namespace Assets.SlotMachineNetTest.Scripts.Universal.Data
+﻿namespace Assets.CommonNashet.Data
 {
 	public class SocketData
 	{

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns
+namespace Assets.CommonNashet.Contracts.Patterns
 {
 	public class ReactiveProperty<T>
 	{

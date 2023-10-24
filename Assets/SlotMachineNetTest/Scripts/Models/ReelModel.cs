@@ -1,8 +1,8 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Contracts.Models;
 using Assets.SlotMachineNetTest.Scripts.Data.Configs;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services;
-using Assets.SlotMachineNetTest.Scripts.Universal.Models;
+using Assets.CommonNashet.Contracts.Patterns;
+using Assets.CommonNashet.Contracts.Services;
+using Assets.CommonNashet.Models;
 using System.Collections;
 using UnityEngine;
 

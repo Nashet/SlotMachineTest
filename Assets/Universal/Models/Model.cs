@@ -1,6 +1,6 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Models;
+﻿using Assets.CommonNashet.Contracts.Models;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Models
+namespace Assets.CommonNashet.Models
 {
 	public abstract class Model : IModel
 	{ }

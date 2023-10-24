@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Patterns
+namespace Assets.CommonNashet.Patterns
 {
 	//Singletons are know as a bad pattern.
 	public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour

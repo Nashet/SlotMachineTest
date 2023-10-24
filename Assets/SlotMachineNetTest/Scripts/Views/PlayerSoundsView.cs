@@ -1,7 +1,7 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels;
 using Assets.SlotMachineNetTest.Scripts.Contracts.Views;
 using Assets.SlotMachineNetTest.Scripts.Data.Configs;
-using Assets.SlotMachineNetTest.Scripts.Universal.Views;
+using Assets.CommonNashet.Views;
 using System.Collections.Generic;
 using UnityEngine;
 

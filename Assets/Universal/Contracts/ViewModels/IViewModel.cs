@@ -1,4 +1,4 @@
-﻿namespace Assets.SlotMachineNetTest.Scripts.Universal.Contracts.ViewModels
+﻿namespace Assets.CommonNashet.Contracts.ViewModels
 {
 	public interface IViewModel { }
 }

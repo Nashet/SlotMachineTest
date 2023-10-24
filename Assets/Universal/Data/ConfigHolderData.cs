@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Data
+namespace Assets.CommonNashet.Data
 {
 	/// <summary>
 	/// The only purpose of this class is to hold all other configs

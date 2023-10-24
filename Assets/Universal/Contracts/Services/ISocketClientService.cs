@@ -1,7 +1,7 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Data;
+﻿using Assets.CommonNashet.Data;
 using System;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services
+namespace Assets.CommonNashet.Contracts.Services
 {
 	public delegate void MessageReceivedDelegate(string socketName, SocketData data);
 	public interface ISocketClientService : IService, IDisposable

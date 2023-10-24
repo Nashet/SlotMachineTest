@@ -1,8 +1,8 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Models;
-using Assets.SlotMachineNetTest.Scripts.Universal.Patterns;
+﻿using Assets.CommonNashet.Contracts.Models;
+using Assets.CommonNashet.Patterns;
 using Zenject;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.ViewModels
+namespace Assets.CommonNashet.ViewModels
 {
 	/// <summary>
 	/// The only goal is to provide ticks for non unity classes

@@ -1,4 +1,4 @@
-﻿namespace Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns
+﻿namespace Assets.CommonNashet.Contracts.Patterns
 {
 	public interface IState
 	{

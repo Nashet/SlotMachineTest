@@ -1,8 +1,8 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
+﻿using Assets.CommonNashet.Contracts.Patterns;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Patterns
+namespace Assets.CommonNashet.Patterns
 {
 	/// <summary>
 	/// Simple implementation of object pool pattern

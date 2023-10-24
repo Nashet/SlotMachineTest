@@ -2,8 +2,8 @@
 using Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels;
 using Assets.SlotMachineNetTest.Scripts.Contracts.Views;
 using Assets.SlotMachineNetTest.Scripts.Data.Configs;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
-using Assets.SlotMachineNetTest.Scripts.Universal.ViewModels;
+using Assets.CommonNashet.Contracts.Patterns;
+using Assets.CommonNashet.ViewModels;
 using Assets.SlotMachineNetTest.Scripts.Views;
 using UnityEngine;
 using Zenject;

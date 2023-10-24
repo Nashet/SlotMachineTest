@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns
+namespace Assets.CommonNashet.Contracts.Patterns
 {
 	/// <summary>
 	/// Represents factory pattern. Creates standart gameobjects

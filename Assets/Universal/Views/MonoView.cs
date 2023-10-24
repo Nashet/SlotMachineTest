@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Views
+namespace Assets.CommonNashet.Views
 {
 	public abstract class MonoView : MonoBehaviour
 	{ }

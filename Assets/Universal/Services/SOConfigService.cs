@@ -1,10 +1,10 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services;
-using Assets.SlotMachineNetTest.Scripts.Universal.Data;
+﻿using Assets.CommonNashet.Contracts.Services;
+using Assets.CommonNashet.Data;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Services
+namespace Assets.CommonNashet.Services
 {
 	/// <summary>
 	/// That implementation of IConfigService is used to get configs from ScriptableObjects.

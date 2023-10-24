@@ -1,4 +1,4 @@
-﻿namespace Assets.SlotMachineNetTest.Scripts.Universal.ViewModels
+﻿namespace Assets.CommonNashet.ViewModels
 {
 	public abstract class ViewModel
 	{ }

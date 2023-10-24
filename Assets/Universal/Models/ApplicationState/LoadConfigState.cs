@@ -1,5 +1,5 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Models;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services;
+﻿using Assets.CommonNashet.Contracts.Models;
+using Assets.CommonNashet.Contracts.Services;
 using System.Threading.Tasks;
 
 namespace Assets.SlotMachineNetTest.Scripts.Models.ApplicationState

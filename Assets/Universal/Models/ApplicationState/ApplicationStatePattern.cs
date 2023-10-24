@@ -1,6 +1,6 @@
-﻿using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Models;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
-using Assets.SlotMachineNetTest.Scripts.Universal.Models;
+﻿using Assets.CommonNashet.Contracts.Models;
+using Assets.CommonNashet.Contracts.Patterns;
+using Assets.CommonNashet.Models;
 using System;
 using UnityEngine;
 

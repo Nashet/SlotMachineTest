@@ -1,6 +1,6 @@
 using Assets.SlotMachineNetTest.Scripts.Contracts.Views;
 using Assets.SlotMachineNetTest.Scripts.Data.Configs;
-using Assets.SlotMachineNetTest.Scripts.Universal.Views;
+using Assets.CommonNashet.Views;
 
 namespace Assets.SlotMachineNetTest.Scripts.Views
 {

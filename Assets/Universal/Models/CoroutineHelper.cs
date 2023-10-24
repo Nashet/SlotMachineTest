@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.SlotMachineNetTest.Scripts.Universal.Models
+namespace Assets.CommonNashet.Models
 {
 	public class CoroutineHelper : MonoBehaviour
 	{

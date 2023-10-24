@@ -1,7 +1,7 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Contracts.Models;
 using Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels;
-using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
-using Assets.SlotMachineNetTest.Scripts.Universal.ViewModels;
+using Assets.CommonNashet.Contracts.Patterns;
+using Assets.CommonNashet.ViewModels;
 using System;
 
 namespace Assets.SlotMachineNetTest.Scripts.ViewModels
