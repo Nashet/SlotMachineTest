@@ -12,6 +12,7 @@ namespace Assets.SlotMachineNetTest.Scripts.Universal.Services
 	public class SOConfigService : IConfigService
 	{
 		private readonly Dictionary<Type, object> allConfigs = new Dictionary<Type, object>();
+		private string configHolderName;
 
 		public SOConfigService(string configHolderName)
 		{
@@ -19,17 +20,27 @@ namespace Assets.SlotMachineNetTest.Scripts.Universal.Services
 			{
 				throw new ArgumentNullException(nameof(configHolderName));
 			}
+			this.configHolderName = configHolderName;
+		}
+
+		public bool IsReady { get; private set; }
+
+		public virtual T GetConfig<T>() where T : class
+		{
+			return (T)allConfigs[typeof(T)];
+		}
+
+		public bool LoadConfigs()
+		{
+			Debug.Log("Loading configs..");
 			var configHolder = Resources.Load<ConfigHolderData>(configHolderName);
 
 			foreach (var item in configHolder.AllConfigs)
 			{
 				AddConfig(item);
 			}
-		}
-
-		public virtual T GetConfig<T>() where T : class
-		{
-			return (T)allConfigs[typeof(T)];
+			IsReady = true;
+			return true;
 		}
 
 		private void AddConfig(ScriptableObject config)

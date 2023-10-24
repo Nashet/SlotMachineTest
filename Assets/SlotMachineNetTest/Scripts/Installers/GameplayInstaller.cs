@@ -6,7 +6,7 @@ using Assets.SlotMachineNetTest.Scripts.Data.Configs;
 using Assets.SlotMachineNetTest.Scripts.InputViews;
 using Assets.SlotMachineNetTest.Scripts.Models;
 using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
-using Assets.SlotMachineNetTest.Scripts.Universal.Services;
+using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services;
 using Assets.SlotMachineNetTest.Scripts.ViewModels;
 using Assets.SlotMachineNetTest.Scripts.Views;
 using System;
@@ -16,53 +16,59 @@ using Zenject;
 
 namespace Assets.SlotMachineNetTest.Scripts.Installers
 {
-	public class ZenjectInstaller : MonoInstaller
+	public class GameplayInstaller : MonoInstaller
 	{
 		[SerializeField] private List<ReelViewModel> reelVMlList = new List<ReelViewModel>();
-		[SerializeField] private string configHolderName;
 		[SerializeField] private PlayerSoundsView playerSoundsView;
 		[SerializeField] private PlayerInput playerInput;
 
+		private IConfigService configService;
+
+		[Inject]
+		public void Construct(IConfigService configService)
+		{
+			this.configService = configService;
+			if (IsGameplayStartedAlone(configService))
+				PrepareGameplayAloneStart(configService);
+		}
+
+		private static void PrepareGameplayAloneStart(IConfigService configService)
+		{
+			configService.LoadConfigs();
+		}
+
+		private static bool IsGameplayStartedAlone(IConfigService configService)
+		{
+			return !configService.IsReady;
+		}
+
 		public override void InstallBindings()
 		{
-			// In this example there is only one 'installer' but in larger projects you
-			// will likely end up with many different re-usable installers
-			// that you'll want to use in several different scenes
-			//
-			// There are several ways to do this.  You can store your installer as a prefab,
-			// a scriptable object, a component within the scene, etc.  Or, if you don't
-			// need your installer to be a MonoBehaviour then you can just simply call
-			// Container.Install
-			//
-			// See here for more details:
-			// https://github.com/modesttree/zenject#installers
-			//
-			//Container.Install<MyOtherInstaller>();			
-
-			var configService = new SOConfigService(configHolderName);
-
-			var gameplayConfig = configService.GetConfig<GameplayData>();
 			var amountsOfReels = reelVMlList.Count;
+			InstallViews();
 
+			InstallBindingsFromInstance(amountsOfReels);
+		}
 
-			Container.Bind<GameplayData>().FromInstance(gameplayConfig);
-
+		private void InstallViews()
+		{
 			Container.Bind<IFakeRandomStrategy<SymbolData>>().To<FakeRandomStrategy>().AsTransient();
 			Container.Bind<IPlayerSoundsView>().FromInstance(playerSoundsView).AsSingle();
 			Container.Bind<IPlayerInput>().FromInstance(playerInput);
-
-			InstallBindingsFromInstance(gameplayConfig, amountsOfReels);
 		}
 
-		private void InstallBindingsFromInstance(GameplayData gameplayConfig, int amountsOfReels)
+		private void InstallBindingsFromInstance(int amountsOfReels)
 		{
+			//todo zenject and colections
+			//todo git rename
+			//todo git move
 			var reelsModels = new List<IReelModel>(amountsOfReels);
 			for (int i = 0; i < amountsOfReels; i++)
 			{
-				reelsModels.Add(new ReelModel(Container.Resolve<IFakeRandomStrategy<SymbolData>>(), gameplayConfig));
+				reelsModels.Add(new ReelModel(Container.Resolve<IFakeRandomStrategy<SymbolData>>(), configService));
 			}
 
-			var slotMachineModel = new SlotMachineModel(gameplayConfig, reelsModels);
+			var slotMachineModel = new SlotMachineModel(configService, reelsModels);
 
 
 			var convertedReelsVM = reelVMlList.ConvertAll<IReelViewModel>(r => r);

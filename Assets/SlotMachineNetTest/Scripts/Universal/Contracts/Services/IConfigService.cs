@@ -7,6 +7,9 @@
 	/// </summary>
 	public interface IConfigService : IService
 	{
+		bool IsReady { get; }
+
 		T GetConfig<T>() where T : class;
+		bool LoadConfigs();
 	}
 }

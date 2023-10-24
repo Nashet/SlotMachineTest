@@ -1,5 +1,6 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Data.Configs;
 using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
+using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,17 +9,17 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 	public class FakeRandomStrategy : IFakeRandomStrategy<SymbolData>
 	{
 		public bool IsFinished => counter >= expectedSequenceSize;
-
 		public bool IsInitialized => true;
 
-		private GameplayData gameplayConfig;
+		private GameplayData gameplayConfig => configService.GetConfig<GameplayData>();
 		private int counter;
 		private int expectedSequenceSize;
+		private IConfigService configService;
 		private IEnumerator<SymbolData> symbolEnumerator;
 
-		private FakeRandomStrategy(GameplayData gameplayConfig)
+		private FakeRandomStrategy(IConfigService configService)
 		{
-			this.gameplayConfig = gameplayConfig;
+			this.configService = configService;
 			symbolEnumerator = GetSymbols().GetEnumerator();
 		}
 

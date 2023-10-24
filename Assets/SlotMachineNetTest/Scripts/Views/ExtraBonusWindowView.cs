@@ -1,6 +1,7 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Contracts.ViewModels;
 using Assets.SlotMachineNetTest.Scripts.Contracts.Views;
 using Assets.SlotMachineNetTest.Scripts.Data.Configs;
+using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services;
 using Assets.SlotMachineNetTest.Scripts.Universal.Views;
 using System.Collections;
 using UnityEngine;
@@ -16,13 +17,15 @@ namespace Assets.SlotMachineNetTest.Scripts.Views
 		private float openingDelay => gameplayData.openingExtraPrizeWindowDelay;
 		[SerializeField] private CanvasGroup canvasGroup;
 		private IExtraBonusWindowViewModel extraBonusWindowViewModel;
-		private GameplayData gameplayData;
+		private IConfigService configService;
+
+		private GameplayData gameplayData => configService.GetConfig<GameplayData>();
 
 		[Inject]
-		private void Construct(GameplayData gameplayData, IExtraBonusWindowViewModel extraBonusWindowViewModel)
+		private void Construct(IConfigService configService, IExtraBonusWindowViewModel extraBonusWindowViewModel)
 		{
+			this.configService = configService;
 			this.extraBonusWindowViewModel = extraBonusWindowViewModel;
-			this.gameplayData = gameplayData;
 			SubscribeTo(extraBonusWindowViewModel);
 		}
 

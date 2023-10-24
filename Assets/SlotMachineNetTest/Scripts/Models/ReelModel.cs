@@ -1,6 +1,7 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Contracts.Models;
 using Assets.SlotMachineNetTest.Scripts.Data.Configs;
 using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
+using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services;
 using Assets.SlotMachineNetTest.Scripts.Universal.Models;
 using System.Collections;
 using UnityEngine;
@@ -17,14 +18,14 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 		private ReactiveProperty<SymbolData> _decorativeSymbol = new();
 		public SymbolData decorativeSymbol => _decorativeSymbol.Value;
 
-
-		private GameplayData gameplayConfig;
+		private IConfigService configService;
+		private GameplayData gameplayConfig => configService.GetConfig<GameplayData>();
 		private IFakeRandomStrategy<SymbolData> randomStrategy;
 		private CoroutineHelper coroutineHelper;
 
-		public ReelModel(IFakeRandomStrategy<SymbolData> randomStrategy, GameplayData gameplayConfig)
+		public ReelModel(IFakeRandomStrategy<SymbolData> randomStrategy, IConfigService configService)
 		{
-			this.gameplayConfig = gameplayConfig;
+			this.configService = configService;
 			this.randomStrategy = randomStrategy;
 			var gameObject = new GameObject("CoroutineHolder");
 			coroutineHelper = gameObject.AddComponent<CoroutineHelper>();

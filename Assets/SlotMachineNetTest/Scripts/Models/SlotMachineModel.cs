@@ -1,6 +1,7 @@
 ﻿using Assets.SlotMachineNetTest.Scripts.Contracts.Models;
 using Assets.SlotMachineNetTest.Scripts.Data.Configs;
 using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Patterns;
+using Assets.SlotMachineNetTest.Scripts.Universal.Contracts.Services;
 using Assets.SlotMachineNetTest.Scripts.Universal.Models;
 using System.Collections.Generic;
 
@@ -10,6 +11,8 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 	{
 		public event PropertyChangedEventHandler<ISlotMachineModel> OnPropertyChanged;
 
+		private IConfigService configService;
+
 		public IList<IReelModel> reelModelsList { get; protected set; }
 
 		public SymbolData symbolConfig => selectedSymbols[0];
@@ -18,7 +21,7 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 		private bool isSpinInProgress;
 		private float _extraBonusSum;
 		private int _lastSpinScores;
-		private GameplayData gameplayData;
+		private GameplayData gameplayData => configService.GetConfig<GameplayData>();
 
 		public int lastSpinScores
 		{
@@ -39,9 +42,9 @@ namespace Assets.SlotMachineNetTest.Scripts.Models
 			}
 		}
 
-		public SlotMachineModel(GameplayData gameplayConfig, List<IReelModel> nestedObjects)
+		public SlotMachineModel(IConfigService configService, List<IReelModel> nestedObjects)
 		{
-			gameplayData = gameplayConfig;
+			this.configService = configService;
 			reelModelsList = nestedObjects;
 		}
 
