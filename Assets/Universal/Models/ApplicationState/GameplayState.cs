@@ -6,7 +6,7 @@ namespace Assets.SlotMachineNetTest.Scripts.Models.ApplicationState
 {
 	public class GameplayState : IApplicationState
 	{
-		private string gameplaySceneName = "Gameplay";
+		private string gameplaySceneName = "Gameplay"; //todo use zenject?
 
 		public bool IsFinished { get; protected set; }
 
