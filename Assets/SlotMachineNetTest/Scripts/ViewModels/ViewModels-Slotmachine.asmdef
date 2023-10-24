@@ -1,5 +1,6 @@
 {
-    "name": "com.slotmachine.viewmodels",
+    "name": "ViewModels-Slotmachine",
+    "rootNamespace": "",
     "references": [
         "GUID:10ff5fb5043a7284da6ca957d599ece7",
         "GUID:a76e133aab4f0664aac22deb2d4bc67e",
